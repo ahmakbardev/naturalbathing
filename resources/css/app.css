@@ -1,0 +1,42 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    * {
+        @apply font-montserrat;
+    }
+}
+
+.rotate {
+    animation: rotateAnimation 4s linear infinite; /* Adjust duration and timing function as needed */
+    transform-origin: center; /* Set transform origin to center */
+}
+
+@layer components {
+    .btn-primary {
+        @apply bg-primary-700 text-center text-white;
+    }
+
+    .btn-secondary {
+        @apply bg-white border border-primary-700 text-center text-primary-700;
+    }
+}
+
+@keyframes rotateAnimation {
+    0% {
+        transform: rotate(0deg);
+    }
+    25% {
+        transform: rotate(90deg);
+    }
+    50% {
+        transform: rotate(180deg);
+    }
+    75% {
+        transform: rotate(270deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
