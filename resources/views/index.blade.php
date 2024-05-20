@@ -11,9 +11,9 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <!-- Append version number to CSS file name -->
-    <link rel="stylesheet" href="{{ asset('css/app.css?v=1.00') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css?v=1.01') }}">
     <!-- Add cache-control headers for CSS and JavaScript files -->
-    <link rel="preload" href="{{ asset('css/app.css?v=1.00') }}" as="style" crossorigin="anonymous" />
+    <link rel="preload" href="{{ asset('css/app.css?v=1.01') }}" as="style" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -22,7 +22,7 @@
 <body class="overflow-x-hidden box-border">
     <header class="sticky top-0 z-[60]">
         <nav
-            class="sticky top-0 flex justify-between items-center py-3 bg-white md:bg-white/50 backdrop-blur-sm px-10 z-[60]">
+            class="sticky top-0 flex justify-between items-center py-3 bg-white md:bg-white/50 backdrop-blur-sm px-5 md:px-10 z-[60]">
             <img class="w-16 object-contain" src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo">
 
             <!-- Mobile Nav -->
@@ -75,27 +75,27 @@
     </header>
 
     <main class="overflow-x-hidden box-border">
-        <div class="head relative py-10 px-10 2xl:px-48 flex flex-col md:flex-row justify-between">
+        <div class="head relative py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3 md:gap-[unset] md:flex-row justify-between">
             <img class="absolute hidden md:flex w-96 -top-44 -left-44 z-[-1] pointer-events-none rotate"
                 src="{{ asset('assets/images/head/suqare-comp.png') }}" alt="">
             <img class="absolute hidden md:flex w-96 -bottom-44 -right-44 z-[-1] pointer-events-none rotate"
                 src="{{ asset('assets/images/head/suqare-comp.png') }}" alt="">
             <img class="absolute hidden md:flex top-1/2 -translate-y-1/2 z-0 pointer-events-none opacity-20 max-w-4xl"
                 src="{{ asset('assets/images/indo.png') }}" alt="">
-            <div class="flex z-[10] flex-col gap-5 max-w-md justify-center">
-                <h1 class="text-6xl font-bold">Welcome To <span class="text-primary-700"> Natural Bathing
+            <div class="flex z-[10] flex-col gap-5 max-w-md justify-center order-2 md:order-1">
+                <h1 class="text-3xl md:text-6xl font-bold">Welcome To <span class="text-primary-700"> Natural Bathing
                         PAB</span></h1>
-                <h4 class="text-xl text-slate-500 font-semibold">
+                <h4 class="text-base md:text-xl text-slate-500 font-semibold">
                     Jelajah permandian alam baruttung, destinasi favorit anda! Rasakan sensasi yang belum pernah anda
                     rasakan di sini
                 </h4>
                 <div class="flex gap-3">
                     <a href="#"
-                        class="btn-primary text-base py-3 px-8 hover:shadow-lg hover:-translate-y-1 transition-all ease-in-out w-fit rounded-full">Pesan
+                        class="btn-primary text-xs md:text-base py-3 px-5 md:px-8 hover:shadow-lg hover:-translate-y-1 transition-all ease-in-out w-fit rounded-full">Pesan
                         Sekarang</a>
                     <a href="#"
-                        class="btn-secondary text-base py-3 px-8 hover:shadow-lg hover:-translate-y-1 transition-all ease-in-out w-fit rounded-full flex gap-5 items-center">
-                        <img src="{{ asset('assets/images/icons/image.png') }}" alt="">
+                        class="btn-secondary text-xs md:text-base py-3 px-5 md:px-8 hover:shadow-lg hover:-translate-y-1 transition-all ease-in-out w-fit rounded-full flex gap-5 items-center">
+                        <img class="hidden md:flex" src="{{ asset('assets/images/icons/image.png') }}" alt="">
                         <span class="text-primary-700">Lihat Foto</span>
                     </a>
                 </div>
@@ -110,13 +110,13 @@
                 </div>
                 <img class="h-36 min-w-36 md:h-fit" src="{{ asset('assets/images/head/head-1.png') }}"
                     alt="" />
-                <img class="absolute top-10 right-5 drop-shadow-lg"
+                <img class="absolute top-10 right-5 drop-shadow-lg hidden md:flex"
                     src="{{ asset('assets/images/head/head-comp.png') }}" alt="">
             </div>
         </div>
-        <div class="lokasi py-10 px-10 2xl:px-48 flex flex-col gap-3 z-10">
-            <h1 class="text-3xl font-bold">Lokasi wisata Natural Bathing PAB</h1>
-            <h4 class="text-xl text-slate-500 max-w-4xl">permandian alam baruttung terletak di desa matajang kecamatan
+        <div class="lokasi py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3 z-10">
+            <h1 class="text-2xl md:text-3xl font-bold">Lokasi wisata Natural Bathing PAB</h1>
+            <h4 class="md:text-xl text-slate-500 max-w-4xl">permandian alam baruttung terletak di desa matajang kecamatan
                 kahu,
                 kabupaten bone, profinsi sulawesi selatan indonesia</h4>
             <iframe
@@ -124,9 +124,9 @@
                 width="100%" height="400" class="rounded-lg mt-5" style="border:0;" allowfullscreen=""
                 loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
-        <div class="paket-biasa py-10 px-10 2xl:px-48 flex flex-col gap-3">
-            <h1 class="text-3xl font-bold">Paket Wisata Biasa</h1>
-            <div class="grid grid-cols-3 gap-5">
+        <div class="paket-biasa py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3">
+            <h1 class="text-2xl md:text-3xl font-bold">Paket Wisata Biasa</h1>
+            <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
                 <div
                     class="flex flex-col gap-3 p-2 rounded-2xl hover:ring-1 group/button-pkt hover:ring-gray-300 transition-all ease-in-out">
                     <div class="relative box-border overflow-hidden">
@@ -201,36 +201,36 @@
                 </div>
             </div>
         </div>
-        <div class="paket-spesial py-10 px-10 2xl:px-48 grid grid-cols-2 items-center">
+        <div class="paket-spesial py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex md:grid grid-cols-2 items-center">
             <div class="flex flex-col">
-                <h1 class="text-3xl font-bold">Paket Wisata Spesial</h1>
-                <div class="flex flex-col gap-3 my-5">
+                <h1 class="text-2xl md:text-3xl font-bold">Paket Wisata Spesial</h1>
+                <div class="flex flex-col gap-5 md:gap-3 my-5">
                     <div class="flex gap-3 items-start">
                         <img class="object-contain" src="{{ asset('assets/images/paket/icons-special-1.png') }}"
                             alt="">
                         <div class="flex flex-col gap-2">
-                            <h1 class="text-xl font-bold">Paket Wisata Lengkap</h1>
-                            <h4 class="text-gray-500 font-semibold">kunjungan wisata bermalam lengkap dengan tempat
+                            <h1 class="text-base md:text-xl font-bold">Paket Wisata Lengkap</h1>
+                            <h4 class="text-gray-500 text-sm font-semibold">kunjungan wisata bermalam lengkap dengan tempat
                                 menginap dan fasilitas wisata lainnya.</h4>
-                            <div class="justify-end text-3xl flex gap-2 items-end font-bold">Rp.500.000 <span
-                                    class="text-base">/ malam</span></div>
+                            <div class="md:justify-end text-xl md:text-3xl flex gap-2 items-end font-bold">Rp.500.000 <span
+                                    class="text-sm d:text-base">/ malam</span></div>
                         </div>
                     </div>
                     <div class="flex gap-3 items-start">
                         <img class="object-contain" src="{{ asset('assets/images/paket/icons-special-1.png') }}"
                             alt="">
                         <div class="flex flex-col gap-2">
-                            <h1 class="text-xl font-bold">Paket Wisata Spesial;</h1>
-                            <h4 class="text-gray-500 font-semibold">kunjungan wisata bermalam lengkap dengan tempat
+                            <h1 class="text-base md:text-xl font-bold">Paket Wisata Spesial</h1>
+                            <h4 class="text-gray-500 text-sm font-semibold">kunjungan wisata bermalam lengkap dengan tempat
                                 menginap dan fasilitas wisata lainnya.</h4>
-                            <div class="justify-end text-3xl flex gap-2 items-end font-bold">Rp.500.000 <span
-                                    class="text-base">/ malam</span></div>
+                            <div class="md:justify-end text-xl md:text-3xl flex gap-2 items-end font-bold">Rp.500.000 <span
+                                    class="text-sm d:text-base">/ malam</span></div>
                         </div>
                     </div>
                 </div>
 
             </div>
-            <div class="flex flex-col gap-3">
+            <div class="lg:flex flex-col gap-3 hidden">
                 <div class="flex justify-end items-end gap-3">
                     <div class="w-72">
                         <img class=" z-[1] rounded-xl" src="{{ asset('assets/images/paket/spesial.png') }}"
