@@ -787,9 +787,6 @@ video {
 .w-full {
   width: 100%;
 }
-.w-12 {
-  width: 3rem;
-}
 .min-w-36 {
   min-width: 9rem;
 }
@@ -902,9 +899,6 @@ video {
 }
 .overflow-x-hidden {
   overflow-x: hidden;
-}
-.text-wrap {
-  text-wrap: wrap;
 }
 .rounded-2xl {
   border-radius: 1rem;
@@ -1033,10 +1027,6 @@ video {
   padding-left: 0.375rem;
   padding-right: 0.375rem;
 }
-.px-10 {
-  padding-left: 2.5rem;
-  padding-right: 2.5rem;
-}
 .px-4 {
   padding-left: 1rem;
   padding-right: 1rem;
@@ -1077,9 +1067,6 @@ video {
   padding-top: 1.25rem;
   padding-bottom: 1.25rem;
 }
-.text-left {
-  text-align: left;
-}
 .text-center {
   text-align: center;
 }
@@ -1112,10 +1099,6 @@ video {
 .text-xs {
   font-size: 0.75rem;
   line-height: 1rem;
-}
-.text-lg {
-  font-size: 1.125rem;
-  line-height: 1.75rem;
 }
 .font-bold {
   font-weight: 700;
@@ -1517,14 +1500,6 @@ video {
     width: fit-content;
   }
 
-  .md\:w-5 {
-    width: 1.25rem;
-  }
-
-  .md\:w-16 {
-    width: 4rem;
-  }
-
   .md\:grid-cols-2 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -1545,16 +1520,12 @@ video {
     justify-content: space-between;
   }
 
-  .md\:gap-\[unset\] {
-    gap: unset;
-  }
-
-  .md\:gap-2 {
-    gap: 0.5rem;
-  }
-
   .md\:gap-3 {
     gap: 0.75rem;
+  }
+
+  .md\:gap-\[unset\] {
+    gap: unset;
   }
 
   .md\:space-y-0 > :not([hidden]) ~ :not([hidden]) {
