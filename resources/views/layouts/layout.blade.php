@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Natural Bathing PAB</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="shortcut icon" href="{{ asset('assets/images/logo/logo.png') }}" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
+        rel="stylesheet">
+    <!-- Append version number to CSS file name -->
+    <link rel="stylesheet" href="{{ asset('css/app.css?v=1.01') }}">
+    <!-- Add cache-control headers for CSS and JavaScript files -->
+    <link rel="preload" href="{{ asset('css/app.css?v=1.01') }}" as="style" crossorigin="anonymous" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @yield('assets')
+</head>
+
+<body class="overflow-x-hidden box-border">
+    @include('layouts.components.header')
+
+    <main class="overflow-x-hidden box-border">
+        @yield('content')
+    </main>
+    <!-- component -->
+    @include('layouts.components.footer')
+
+    <script>
+        document.getElementById('burger').addEventListener('click', function() {
+            var menu = document.getElementById('mobile-menu');
+            if (menu.classList.contains('hidden')) {
+                menu.classList.remove('hidden');
+                setTimeout(function() {
+                    menu.classList.remove('-translate-y-full');
+                    menu.classList.add('translate-y-0');
+                }, 50); // Delay untuk memastikan transisi terlihat
+            } else {
+                menu.classList.remove('translate-y-0');
+                menu.classList.add('-translate-y-full');
+                setTimeout(function() {
+                    menu.classList.add('hidden');
+                }, 300); // Durasi transisi harus sesuai dengan yang diatur di Tailwind
+            }
+        });
+    </script>
+    @yield('scripts')
+</body>
+
+</html>
