@@ -30,6 +30,7 @@
     <!-- component -->
     @include('layouts.components.footer')
 
+    @yield('scripts')
     <script>
         document.getElementById('burger').addEventListener('click', function() {
             var menu = document.getElementById('mobile-menu');
@@ -48,7 +49,6 @@
             }
         });
     </script>
-    @yield('scripts')
 </body>
 
 </html>
