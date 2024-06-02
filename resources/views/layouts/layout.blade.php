@@ -12,24 +12,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap"
         rel="stylesheet">
     <!-- Append version number to CSS file name -->
-    <link rel="stylesheet" href="{{ asset('css/app.css?v=1.01') }}">
+    <link rel="stylesheet" href="{{ asset('css/app.css?v=1.02') }}">
     <!-- Add cache-control headers for CSS and JavaScript files -->
-    <link rel="preload" href="{{ asset('css/app.css?v=1.01') }}" as="style" crossorigin="anonymous" />
+    <link rel="preload" href="{{ asset('css/app.css?v=1.02') }}" as="style" crossorigin="anonymous" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    @livewireStyles
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine-ie11.js"
+        integrity="sha512-6m6AtgVSg7JzStQBuIpqoVuGPVSAK5Sp/ti6ySu6AjRDa1pX8mIl1TwP9QmKXU+4Mhq/73SzOk6mbNvyj9MPzQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     @yield('assets')
 </head>
 
 <body class="overflow-x-hidden box-border">
     @include('layouts.components.header')
-
     <main class="overflow-x-hidden box-border">
+        @livewire('login-modal')
         @yield('content')
     </main>
     <!-- component -->
     @include('layouts.components.footer')
-
+    @livewireScripts
+    @yield('scripts')
     <script>
         document.getElementById('burger').addEventListener('click', function() {
             var menu = document.getElementById('mobile-menu');
@@ -48,7 +53,6 @@
             }
         });
     </script>
-    @yield('scripts')
 </body>
 
 </html>

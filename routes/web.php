@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -20,3 +21,5 @@ Route::get('/', function () {
 Route::get('/paket', function() {
     return view('paket');
 })->name('paket');
+
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');

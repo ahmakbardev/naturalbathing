@@ -13,11 +13,12 @@
             <button id="burger" class="text-gray-600 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                        d="M4 6h16M4 12h16m-7 6h7"></path>
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7">
+                    </path>
                 </svg>
             </button>
         </div>
+
         <!-- Desktop Nav -->
         <div class="hidden lg:flex gap-8 justify-between w-full items-center">
             <ul class="flex gap-8 w-full justify-center">
@@ -27,15 +28,25 @@
             </ul>
             <ul class="flex gap-5 items-center">
                 <li>
-                    <button class="relative">
+                    <button id="cart" class="relative">
                         <span
                             class="bg-red-500 text-white text-[10px] font-semibold px-1.5 py-0.5 rounded-full absolute -top-4 -right-3">1</span>
                         <img class="w-10" src="{{ asset('assets/images/icons/cart.png') }}" alt="Cart">
                     </button>
                 </li>
-                <li>
-                    <a href="#" class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Masuk</a>
-                </li>
+                @guest <!-- Jika pengguna belum login -->
+                    <li>
+                        <a href="#" id="loginButton"
+                            class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Masuk</a>
+                    </li>
+                @else
+                    <!-- Jika pengguna sudah login -->
+                    <li>
+                        <a href="{{ route('logout') }}" id="logoutButton"
+                            class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Logout
+                        </a>
+                    </li>
+                @endguest
             </ul>
         </div>
     </nav>
@@ -46,8 +57,95 @@
             <li>Paket</li>
             <li>Tentang Kami</li>
             <li>
-                <a href="#" class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Masuk</a>
+                @guest <!-- Jika pengguna belum login -->
+                    <a href="#" id="mobileLoginButton"
+                        class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Masuk</a>
+                @else
+                    <!-- Jika pengguna sudah login -->
+                    <a href="{{ route('logout') }}" id="mobileLogoutButton"
+                        class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Logout
+                    </a>
+                @endguest
             </li>
         </ul>
     </div>
 </header>
+
+<!-- Popup Cart -->
+<div id="popupCart" class="fixed inset-0 z-[12] bg-gray-900/30 bg-opacity-50 flex items-center justify-center hidden">
+    @include('components.popupCart')
+</div>
+
+@section('scripts')
+    <script>
+        document.getElementById('cart').addEventListener('click', function() {
+            const popupCart = document.getElementById('popupCart');
+            const CartContent = document.getElementById('CartContent');
+            if (popupCart.classList.contains('hidden')) {
+                popupCart.classList.remove('hidden');
+                setTimeout(() => {
+                    CartContent.classList.remove('slide-in-right');
+                    CartContent.classList.add('slide-in');
+                }, 10); // slight delay to trigger transition
+            } else {
+                CartContent.classList.remove('slide-in');
+                CartContent.classList.add('slide-in-right');
+                setTimeout(() => {
+                    popupCart.classList.add('hidden');
+                }, 500); // duration of the slide-out animation
+            }
+        });
+
+        document.getElementById('closePopup').addEventListener('click', function() {
+            const popupCart = document.getElementById('popupCart');
+            const CartContent = document.getElementById('CartContent');
+            CartContent.classList.remove('slide-in');
+            CartContent.classList.add('slide-in-right');
+            setTimeout(() => {
+                popupCart.classList.add('hidden');
+            }, 500); // duration of the slide-out animation
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const loginButton = document.getElementById('loginButton');
+            const mobileLoginButton = document.getElementById('mobileLoginButton');
+            const logoutButton = document.getElementById('logoutButton');
+            const mobileLogoutButton = document.getElementById('mobileLogoutButton');
+            const loginModal = document.getElementById('loginModal');
+            const closeModal = document.getElementById('closeModal');
+
+            function toggleModal() {
+                loginModal.classList.toggle('hidden');
+            }
+
+            loginButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                toggleModal();
+            });
+
+            mobileLoginButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                toggleModal();
+            });
+
+            logoutButton.addEventListener('click', function() {
+                // Lakukan proses logout di sini
+            });
+
+            mobileLogoutButton.addEventListener('click', function() {
+                // Lakukan proses logout di sini
+            });
+
+            closeModal.addEventListener('click', function() {
+                toggleModal();
+            });
+
+            // Periksa status login saat halaman dimuat
+            const isLoggedIn = {{ Auth::check() ? 'true' : 'false' }};
+            if (isLoggedIn) {
+                loginModal.classList.add('hidden');
+            }
+        });
+    </script>
+@endsection
