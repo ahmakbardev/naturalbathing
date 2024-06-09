@@ -22,7 +22,7 @@
                 @if ($heroSections->video)
                     <a href="#"
                         class="btn-secondary text-xs md:text-base py-3 px-5 md:px-8 hover:shadow-lg hover:-translate-y-1 transition-all ease-in-out w-fit rounded-full flex gap-5 items-center"
-                        onclick="openModal('{{ Storage::url($heroSections->video) }}')">
+                        onclick="openModal('{{ asset('storage/hero-section/' . $heroSections->video) }}')">
                         <img class="hidden md:flex" src="{{ asset('assets/images/icons/image.png') }}" alt="">
                         <span class="text-primary-700">Lihat Video</span>
                     </a>
