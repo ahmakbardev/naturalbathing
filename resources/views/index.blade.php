@@ -10,31 +10,75 @@
         <img class="absolute hidden md:flex top-1/2 -translate-y-1/2 z-0 pointer-events-none opacity-20 max-w-4xl"
             src="{{ asset('assets/images/indo.png') }}" alt="">
         <div class="flex z-[10] flex-col gap-5 max-w-md justify-center order-2 md:order-1">
-            <h1 class="text-3xl md:text-6xl font-bold">Welcome To <span class="text-primary-700"> Natural Bathing
-                    PAB</span></h1>
+            <h1 class="text-3xl md:text-6xl font-bold">{{ $heroSections->title }} <span
+                    class="text-primary-700">{{ $heroSections->span_title }}</span></h1>
             <h4 class="text-base md:text-xl text-slate-500 font-semibold">
-                Jelajah permandian alam baruttung, destinasi favorit anda! Rasakan sensasi yang belum pernah anda
-                rasakan di sini
+                {{ $heroSections->subtitle }}
             </h4>
             <div class="flex gap-3">
                 <a href="#"
                     class="btn-primary text-xs md:text-base py-3 px-5 md:px-8 hover:shadow-lg hover:-translate-y-1 transition-all ease-in-out w-fit rounded-full">Pesan
                     Sekarang</a>
-                <a href="#"
-                    class="btn-secondary text-xs md:text-base py-3 px-5 md:px-8 hover:shadow-lg hover:-translate-y-1 transition-all ease-in-out w-fit rounded-full flex gap-5 items-center">
-                    <img class="hidden md:flex" src="{{ asset('assets/images/icons/image.png') }}" alt="">
-                    <span class="text-primary-700">Lihat Foto</span>
-                </a>
+                @if ($heroSections->video)
+                    <a href="#"
+                        class="btn-secondary text-xs md:text-base py-3 px-5 md:px-8 hover:shadow-lg hover:-translate-y-1 transition-all ease-in-out w-fit rounded-full flex gap-5 items-center"
+                        onclick="openModal('{{ Storage::url($heroSections->video) }}')">
+                        <img class="hidden md:flex" src="{{ asset('assets/images/icons/image.png') }}" alt="">
+                        <span class="text-primary-700">Lihat Video</span>
+                    </a>
+                @endif
+                <!-- Modal -->
+                <div id="videoModal"
+                    class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300 ease-in-out">
+                    <div class="bg-white rounded-lg overflow-hidden shadow-lg w-11/12 md:w-1/2">
+                        <div class="flex justify-end p-2">
+                            <button onclick="closeModal()" class="text-3xl text-gray-600 hover:text-gray-900">&times;</button>
+                        </div>
+                        <div class="p-4">
+                            <video id="modalVideo" controls class="w-full">
+                                <source id="videoSource" src="" type="video/mp4">
+                                Your browser does not support the video tag.
+                            </video>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function openModal(videoUrl) {
+                        const modalVideo = document.getElementById('modalVideo');
+                        const videoSource = document.getElementById('videoSource');
+
+                        videoSource.src = videoUrl;
+                        modalVideo.load(); // Load the new video source
+                        modalVideo.play(); // Start playing the video
+                        document.getElementById('videoModal').classList.remove('hidden');
+                        setTimeout(() => {
+                            document.getElementById('videoModal').classList.add('opacity-100');
+                        }, 10);
+                    }
+
+                    function closeModal() {
+                        const modal = document.getElementById('videoModal');
+                        const modalVideo = document.getElementById('modalVideo');
+                        modal.classList.remove('opacity-100');
+                        setTimeout(() => {
+                            modal.classList.add('hidden');
+                            modalVideo.pause();
+                            document.getElementById('videoSource').src = "";
+                        }, 300);
+                    }
+                </script>
             </div>
         </div>
         <div class="gap-3 items-center relative w-full justify-center md:w-fit md:justify-between flex order-1 md:order-2">
             <div class="flex flex-col h-fit gap-3">
-                <img class="w-36 md:w-52 flex md:hidden xl:flex" src="{{ asset('assets/images/head/head-1.png') }}"
-                    alt="" />
-                <img class="w-36 md:w-52 flex md:hidden xl:flex" src="{{ asset('assets/images/head/head-1.png') }}"
-                    alt="" />
+                <img class="w-36 md:w-52 max-h-60 object-cover rounded-md flex md:hidden xl:flex"
+                    src="{{ Storage::url($heroSections->image1) }}" alt="" />
+                <img class="w-36 md:w-52 max-h-60 object-cover rounded-md flex md:hidden xl:flex"
+                    src="{{ Storage::url($heroSections->image2) }}" alt="" />
             </div>
-            <img class="h-36 min-w-36 md:h-fit" src="{{ asset('assets/images/head/head-1.png') }}" alt="" />
+            <img class="w-36 max-h-60 object-cover rounded-md md:w-52" src="{{ Storage::url($heroSections->image3) }}"
+                alt="" />
             <img class="absolute top-10 right-5 drop-shadow-lg hidden md:flex"
                 src="{{ asset('assets/images/head/head-comp.png') }}" alt="">
         </div>
