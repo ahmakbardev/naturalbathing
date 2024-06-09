@@ -21,12 +21,20 @@ jobs:
           key: ${{ secrets.SERVER_KEY }}
           port: ${{ secrets.SERVER_PORT }}
           script: |
-            cd /home/u376682195/domains/naturalbathingpab.com/staging/naturalbathing/
             chmod +x ~/bin/composer
             echo "export PATH=$HOME/bin:$PATH" >> ~/.bash_profile
             source ~/.bash_profile
             which composer
             composer --version
+            cd /home/u376682195/domains/naturalbathingpab.com/staging/naturalbathing/
+            git stash
             git pull origin develop
             composer update
-            composer install
+            php artisan queue:restart
+            php artisan cache:clear
+            php artisan route:clear
+            php artisan config:clear
+            php artisan view:clear
+            php artisan storage:link
+            chmod -R 775 storage
+            chmod -R 775 public/storage
