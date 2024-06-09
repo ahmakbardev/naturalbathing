@@ -32,7 +32,8 @@
                     class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden transition-opacity duration-300 ease-in-out">
                     <div class="bg-white rounded-lg overflow-hidden shadow-lg w-11/12 md:w-1/2">
                         <div class="flex justify-end p-2">
-                            <button onclick="closeModal()" class="text-3xl text-gray-600 hover:text-gray-900">&times;</button>
+                            <button onclick="closeModal()"
+                                class="text-3xl text-gray-600 hover:text-gray-900">&times;</button>
                         </div>
                         <div class="p-4">
                             <video id="modalVideo" controls class="w-full">
@@ -73,12 +74,12 @@
         <div class="gap-3 items-center relative w-full justify-center md:w-fit md:justify-between flex order-1 md:order-2">
             <div class="flex flex-col h-fit gap-3">
                 <img class="w-36 md:w-52 max-h-60 object-cover rounded-md flex md:hidden xl:flex"
-                    src="{{ Storage::url($heroSections->image1) }}" alt="" />
+                    src="{{ asset('storage/hero-section/' . $heroSections->image1) }}" alt="" />
                 <img class="w-36 md:w-52 max-h-60 object-cover rounded-md flex md:hidden xl:flex"
-                    src="{{ Storage::url($heroSections->image2) }}" alt="" />
+                    src="{{ asset('storage/hero-section/' . $heroSections->image2) }}" alt="" />
             </div>
-            <img class="w-36 max-h-60 object-cover rounded-md md:w-52" src="{{ Storage::url($heroSections->image3) }}"
-                alt="" />
+            <img class="w-36 max-h-60 object-cover rounded-md md:w-52"
+                src="{{ asset('storage/hero-section/' . $heroSections->image3) }}" alt="" />
             <img class="absolute top-10 right-5 drop-shadow-lg hidden md:flex"
                 src="{{ asset('assets/images/head/head-comp.png') }}" alt="">
         </div>
