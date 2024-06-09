@@ -58,7 +58,7 @@
                     <img class="w-full rounded-xl" src="{{ asset('assets/images/paket/biasa.png') }}" alt="">
                     <div
                         class="absolute flex bottom-3 left-1/2 -translate-x-1/2 ml-3 w-full group-hover/button-pkt:-translate-y-0 transition-all ease-in-out box-border translate-y-20">
-                        <a href="{{ route('paket') }}"
+                        <a href="{{ route('detail') }}"
                             class="btn-primary hover:btn-secondary hover:bg-primary-700/95 hover:text-white hover:border-none hover:font-semibold transition-all ease-in-out w-[94%] py-3 rounded-md">Pesan
                             Paket</a>
                     </div>
@@ -81,7 +81,7 @@
                     <img class="w-full rounded-xl" src="{{ asset('assets/images/paket/biasa.png') }}" alt="">
                     <div
                         class="absolute flex bottom-3 left-1/2 -translate-x-1/2 ml-3 w-full group-hover/button-pkt:-translate-y-0 transition-all ease-in-out box-border translate-y-20">
-                        <a href="#"
+                        <a href="{{ route('detail') }}"
                             class="btn-primary hover:btn-secondary hover:bg-primary-700/95 hover:text-white hover:border-none hover:font-semibold transition-all ease-in-out w-[94%] py-3 rounded-md">Pesan
                             Paket</a>
                     </div>

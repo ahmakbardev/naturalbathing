@@ -22,4 +22,8 @@ Route::get('/paket', function() {
     return view('paket');
 })->name('paket');
 
+Route::get('product-detail', function() {
+    return view('content.detail');
+})->name('detail');
+
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
