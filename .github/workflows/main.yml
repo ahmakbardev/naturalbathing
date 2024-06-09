@@ -35,6 +35,6 @@ jobs:
             php artisan route:clear
             php artisan config:clear
             php artisan view:clear
-            php artisan storage:link
+            ln -s /home/u376682195/domains/naturalbathingpab.com/naturalbathing_admin/public/storage /home/u376682195/domains/naturalbathingpab.com/public_html/staging
             chmod -R 775 storage
             chmod -R 775 public/storage
