@@ -146,7 +146,7 @@
                             alt="{{ $paket->nama_paket }}">
                         <div class="flex flex-col gap-2">
                             <h1 class="text-base md:text-xl font-bold">{{ $paket->nama_paket }}</h1>
-                            <h4 class="text-gray-500 text-sm font-semibold">{{ $paket->deskripsi }}</h4>
+                            <h4 class="text-gray-500 text-sm font-semibold">{!! $paket->short_deskripsi !!}</h4>
                             <div class="md:justify-end text-xl md:text-3xl flex gap-2 items-end font-bold">
                                 Rp{{ number_format($paket->harga, 0, ',', '.') }}
                                 <span class="text-sm d:text-base">/ malam</span>

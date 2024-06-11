@@ -20,12 +20,21 @@
         <!-- Desktop Nav -->
         <div class="hidden lg:flex gap-8 justify-between w-full items-center">
             <ul class="flex gap-8 w-full justify-center">
-                <li class="text-sm"><a href="#tentang-kami">Tentang Kami</a></li>
-                <li class="text-sm"><a href="#destinasi">Destinasi</a></li>
-                <li class="text-sm"><a href="#akomodasi">Akomodasi</a></li>
-                <li class="text-sm"><a href="#aktivitas">Aktivitas</a></li>
-                <li class="text-sm"><a href="#kontak">Kontak</a></li>
-                <li class="text-sm"><a href="#panduan-perjalanan">Panduan Perjalanan</a></li>
+                @if (Route::currentRouteName() == 'home')
+                    <li class="text-sm"><a href="#tentang-kami" class="scroll-smooth">Tentang Kami</a></li>
+                    <li class="text-sm"><a href="#destinasi" class="scroll-smooth">Destinasi</a></li>
+                    <li class="text-sm"><a href="#akomodasi" class="scroll-smooth">Akomodasi</a></li>
+                    <li class="text-sm"><a href="#aktivitas" class="scroll-smooth">Aktivitas</a></li>
+                    <li class="text-sm"><a href="#kontak" class="scroll-smooth">Kontak</a></li>
+                    <li class="text-sm"><a href="#panduan-perjalanan" class="scroll-smooth">Panduan Perjalanan</a></li>
+                @else
+                    <li class="text-sm"><a href="{{ route('home') }}#tentang-kami">Tentang Kami</a></li>
+                    <li class="text-sm"><a href="{{ route('home') }}#destinasi">Destinasi</a></li>
+                    <li class="text-sm"><a href="{{ route('home') }}#akomodasi">Akomodasi</a></li>
+                    <li class="text-sm"><a href="{{ route('home') }}#aktivitas">Aktivitas</a></li>
+                    <li class="text-sm"><a href="{{ route('home') }}#kontak">Kontak</a></li>
+                    <li class="text-sm"><a href="{{ route('home') }}#panduan-perjalanan">Panduan Perjalanan</a></li>
+                @endif
             </ul>
             <ul class="flex gap-5 items-center">
                 <li>
@@ -57,12 +66,21 @@
     <div id="mobile-menu"
         class="hidden lg:hidden absolute top-[88px] left-0 w-full bg-gray-200 z-50 transform -translate-y-full transition-transform duration-300 ease-in-out">
         <ul class="flex flex-col gap-8 items-center p-5">
-            <li class="text-sm"><a href="#tentang-kami">Tentang Kami</a></li>
-            <li class="text-sm"><a href="#destinasi">Destinasi</a></li>
-            <li class="text-sm"><a href="#akomodasi">Akomodasi</a></li>
-            <li class="text-sm"><a href="#aktivitas">Aktivitas</a></li>
-            <li class="text-sm"><a href="#kontak">Kontak</a></li>
-            <li class="text-sm"><a href="#panduan-perjalanan">Panduan Perjalanan</a></li>
+            @if (Route::currentRouteName() == 'home')
+                <li class="text-sm"><a href="#tentang-kami" class="scroll-smooth">Tentang Kami</a></li>
+                <li class="text-sm"><a href="#destinasi" class="scroll-smooth">Destinasi</a></li>
+                <li class="text-sm"><a href="#akomodasi" class="scroll-smooth">Akomodasi</a></li>
+                <li class="text-sm"><a href="#aktivitas" class="scroll-smooth">Aktivitas</a></li>
+                <li class="text-sm"><a href="#kontak" class="scroll-smooth">Kontak</a></li>
+                <li class="text-sm"><a href="#panduan-perjalanan" class="scroll-smooth">Panduan Perjalanan</a></li>
+            @else
+                <li class="text-sm"><a href="{{ route('home') }}#tentang-kami">Tentang Kami</a></li>
+                <li class="text-sm"><a href="{{ route('home') }}#destinasi">Destinasi</a></li>
+                <li class="text-sm"><a href="{{ route('home') }}#akomodasi">Akomodasi</a></li>
+                <li class="text-sm"><a href="{{ route('home') }}#aktivitas">Aktivitas</a></li>
+                <li class="text-sm"><a href="{{ route('home') }}#kontak">Kontak</a></li>
+                <li class="text-sm"><a href="{{ route('home') }}#panduan-perjalanan">Panduan Perjalanan</a></li>
+            @endif
             <li>
                 @guest <!-- Jika pengguna belum login -->
                     <a href="#" id="mobileLoginButton"
