@@ -39,7 +39,7 @@
             </div>
             <button
                 wire:click="addItem({{ $paket->id }}, '{{ $paket->nama_paket }}', {{ $paket->harga }}, '{{ $gambarArray[0] }}')"
-                class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300 ease-in-out">
+                class="bg-primary-700 text-white font-bold py-2 px-4 rounded-full hover:bg-primary-600 transition duration-300 ease-in-out">
                 <i class="fas fa-shopping-cart mr-2"></i> Pesan Paket
             </button>
         </div>
@@ -48,7 +48,7 @@
     @if ($reviewCount > 0)
         <div class="mt-10">
             <h2 class="text-2xl font-bold text-gray-800 mb-3">Reviews</h2>
-            <div class="swiper-container relative">
+            <div class="swiper-container relative" id="product">
                 <div class="swiper-wrapper">
                     @foreach ($paket->review as $review)
                         <div class="swiper-slide p-5 bg-gray-100 rounded-lg shadow-md">
@@ -72,7 +72,7 @@
                 });
             });
 
-            const swiper = new Swiper('.swiper-container', {
+            const swiper = new Swiper('#product', {
                 loop: true,
                 pagination: {
                     el: '.swiper-pagination',

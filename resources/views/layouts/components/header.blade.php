@@ -1,7 +1,9 @@
 <header class="sticky top-0 z-[60]">
     <nav
         class="sticky top-0 flex justify-between items-center py-3 bg-white md:bg-white/50 backdrop-blur-sm px-5 md:px-10 z-[60]">
-        <img class="w-16 object-contain" src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo">
+        <a href="/">
+            <img class="w-16 object-contain" src="{{ asset('assets/images/logo/logo.png') }}" alt="Logo">
+        </a>
 
         <!-- Mobile Nav -->
         <div class="lg:hidden burger-container flex items-center gap-5">
@@ -18,9 +20,12 @@
         <!-- Desktop Nav -->
         <div class="hidden lg:flex gap-8 justify-between w-full items-center">
             <ul class="flex gap-8 w-full justify-center">
-                <li>Home</li>
-                <li>Paket</li>
-                <li>Tentang Kami</li>
+                <li class="text-sm"><a href="#tentang-kami">Tentang Kami</a></li>
+                <li class="text-sm"><a href="#destinasi">Destinasi</a></li>
+                <li class="text-sm"><a href="#akomodasi">Akomodasi</a></li>
+                <li class="text-sm"><a href="#aktivitas">Aktivitas</a></li>
+                <li class="text-sm"><a href="#kontak">Kontak</a></li>
+                <li class="text-sm"><a href="#panduan-perjalanan">Panduan Perjalanan</a></li>
             </ul>
             <ul class="flex gap-5 items-center">
                 <li>
@@ -52,9 +57,12 @@
     <div id="mobile-menu"
         class="hidden lg:hidden absolute top-[88px] left-0 w-full bg-gray-200 z-50 transform -translate-y-full transition-transform duration-300 ease-in-out">
         <ul class="flex flex-col gap-8 items-center p-5">
-            <li>Home</li>
-            <li>Paket</li>
-            <li>Tentang Kami</li>
+            <li class="text-sm"><a href="#tentang-kami">Tentang Kami</a></li>
+            <li class="text-sm"><a href="#destinasi">Destinasi</a></li>
+            <li class="text-sm"><a href="#akomodasi">Akomodasi</a></li>
+            <li class="text-sm"><a href="#aktivitas">Aktivitas</a></li>
+            <li class="text-sm"><a href="#kontak">Kontak</a></li>
+            <li class="text-sm"><a href="#panduan-perjalanan">Panduan Perjalanan</a></li>
             <li>
                 @guest <!-- Jika pengguna belum login -->
                     <a href="#" id="mobileLoginButton"
@@ -62,13 +70,13 @@
                 @else
                     <!-- Jika pengguna sudah login -->
                 <li>
-                    <a href="#" class="">Lihat Pesanan</a>
+                    <a href="#">Lihat Pesanan</a>
                 </li>
                 <li>
-                    <a href="#" class="">Profile</a>
+                    <a href="#">Profile</a>
                 </li>
                 <li>
-                    <a href="{{ route('logout') }}" id="mobileLogoutButton" class="">Logout</a>
+                    <a href="{{ route('logout') }}" id="mobileLogoutButton">Logout</a>
                 </li>
             @endguest
             </li>
@@ -83,7 +91,7 @@
         @livewire('cart')
     </div>
 </div>
-
+@auth
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const userMenuButton = document.getElementById('userMenuButton');
@@ -111,62 +119,64 @@
             });
         });
     </script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const cartButtonMobile = document.getElementById('cart-mobile');
-            const cartButtonDesktop = document.getElementById('cart-desktop');
-            const popupCart = document.getElementById('popupCart');
-            const CartContent = document.getElementById('CartContent');
-            const closePopup = document.getElementById('closePopup');
+@endauth
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const cartButtonMobile = document.getElementById('cart-mobile');
+        const cartButtonDesktop = document.getElementById('cart-desktop');
+        const popupCart = document.getElementById('popupCart');
+        const CartContent = document.getElementById('CartContent');
+        const closePopup = document.getElementById('closePopup');
 
-            function handleCartButtonClick() {
-                if (popupCart.classList.contains('hidden')) {
-                    popupCart.classList.remove('hidden');
-                    setTimeout(() => {
-                        CartContent.classList.remove('slide-in-right');
-                        CartContent.classList.add('slide-in');
-                    }, 10); // slight delay to trigger transition
-                } else {
-                    CartContent.classList.remove('slide-in');
-                    CartContent.classList.add('slide-in-right');
-                    setTimeout(() => {
-                        popupCart.classList.add('hidden');
-                    }, 500); // duration of the slide-out animation
-                }
-            }
-
-            if (window.innerWidth >= 1024) { // lg breakpoint
-                cartButtonDesktop.addEventListener('click', handleCartButtonClick);
+        function handleCartButtonClick() {
+            if (popupCart.classList.contains('hidden')) {
+                popupCart.classList.remove('hidden');
+                setTimeout(() => {
+                    CartContent.classList.remove('slide-in-right');
+                    CartContent.classList.add('slide-in');
+                }, 10); // slight delay to trigger transition
             } else {
-                cartButtonMobile.addEventListener('click', handleCartButtonClick);
-            }
-
-            closePopup.addEventListener('click', function() {
                 CartContent.classList.remove('slide-in');
                 CartContent.classList.add('slide-in-right');
                 setTimeout(() => {
                     popupCart.classList.add('hidden');
                 }, 500); // duration of the slide-out animation
-            });
+            }
+        }
 
-            // Close popup cart when clicking outside of CartContent
-            document.addEventListener('click', function(event) {
-                if (!popupCart.classList.contains('hidden') && !CartContent.contains(event.target) && event
-                    .target !== cartButtonDesktop && event.target !== cartButtonMobile) {
-                    CartContent.classList.remove('slide-in');
-                    CartContent.classList.add('slide-in-right');
-                    setTimeout(() => {
-                        popupCart.classList.add('hidden');
-                    }, 500); // duration of the slide-out animation
-                }
-            });
+        if (window.innerWidth >= 1024) { // lg breakpoint
+            cartButtonDesktop.addEventListener('click', handleCartButtonClick);
+        } else {
+            cartButtonMobile.addEventListener('click', handleCartButtonClick);
+        }
 
-            // Prevent closing when clicking inside CartContent
-            CartContent.addEventListener('click', function(event) {
-                event.stopPropagation();
-            });
+        closePopup.addEventListener('click', function() {
+            CartContent.classList.remove('slide-in');
+            CartContent.classList.add('slide-in-right');
+            setTimeout(() => {
+                popupCart.classList.add('hidden');
+            }, 500); // duration of the slide-out animation
         });
-    </script>
+
+        // Close popup cart when clicking outside of CartContent
+        document.addEventListener('click', function(event) {
+            if (!popupCart.classList.contains('hidden') && !CartContent.contains(event.target) && event
+                .target !== cartButtonDesktop && event.target !== cartButtonMobile) {
+                CartContent.classList.remove('slide-in');
+                CartContent.classList.add('slide-in-right');
+                setTimeout(() => {
+                    popupCart.classList.add('hidden');
+                }, 500); // duration of the slide-out animation
+            }
+        });
+
+        // Prevent closing when clicking inside CartContent
+        CartContent.addEventListener('click', function(event) {
+            event.stopPropagation();
+        });
+    });
+</script>
+@guest
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const loginButton = document.getElementById('loginButton');
@@ -190,13 +200,13 @@
                 toggleModal();
             });
 
-            logoutButton.addEventListener('click', function() {
-                // Lakukan proses logout di sini
-            });
+            // logoutButton.addEventListener('click', function() {
+            //     // Lakukan proses logout di sini
+            // });
 
-            mobileLogoutButton.addEventListener('click', function() {
-                // Lakukan proses logout di sini
-            });
+            // mobileLogoutButton.addEventListener('click', function() {
+            //     // Lakukan proses logout di sini
+            // });
 
             closeModal.addEventListener('click', function() {
                 toggleModal();
@@ -209,3 +219,5 @@
             }
         });
     </script>
+
+@endguest

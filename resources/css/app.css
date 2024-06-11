@@ -6,6 +6,10 @@
     * {
         @apply font-montserrat;
     }
+
+    html {
+        scroll-behavior: smooth;
+    }
 }
 
 .rotate {
@@ -60,7 +64,7 @@
     display: inline-block;
 }
 
-.zoom-container #mainImage{
+.zoom-container #mainImage {
     transition: transform 0.3s ease;
 }
 

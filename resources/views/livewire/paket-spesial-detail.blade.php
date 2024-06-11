@@ -34,7 +34,7 @@
             </div>
             <button
                 wire:click="addItem({{ $paket->id }}, '{{ $paket->nama_paket }}', {{ $paket->harga }}, '{{ $paket->gambar[0] }}')"
-                class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300 ease-in-out">
+                class="bg-primary-700 text-white font-bold py-2 px-4 rounded-full hover:bg-primary-600 transition duration-300 ease-in-out">
                 <i class="fas fa-shopping-cart mr-2"></i> Pesan Paket
             </button>
         </div>

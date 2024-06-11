@@ -13,7 +13,8 @@ class DashboardController extends Controller
         $heroSections = DB::table('hero_section')->first();
         $paketBiasas = DB::table('paket_biasa')->get();
         $paketSpesial = DB::table('paket_spesial')->get();
-        // dd($heroSections);
-        return view('index', compact(['heroSections', 'paketBiasas', 'paketSpesial']));
+        $mapSection = DB::table('map_sections')->first(); // Mengambil data peta
+
+        return view('index', compact(['heroSections', 'paketBiasas', 'paketSpesial', 'mapSection']));
     }
 }

@@ -89,12 +89,12 @@
         <h4 class="md:text-xl text-slate-500 max-w-4xl">permandian alam baruttung terletak di desa matajang kecamatan
             kahu,
             kabupaten bone, profinsi sulawesi selatan indonesia</h4>
-        <iframe
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15898.97098282299!2d120.0443181!3d-4.9823571!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dbe87359305b7ed%3A0xc40d885be7b2b1db!2sPermandian%20Alam%20Baruttung!5e0!3m2!1sen!2sid!4v1716187089210!5m2!1sen!2sid"
-            width="100%" height="400" class="rounded-lg mt-5" style="border:0;" allowfullscreen="" loading="lazy"
-            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        @if ($mapSection)
+            <iframe src="{{ $mapSection->google_map_url }}" width="100%" height="400" class="rounded-lg mt-5"
+                style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        @endif
     </div>
-    <div class="paket-biasa py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3">
+    <div id="destinasi" class="paket-biasa py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3">
         <h1 class="text-2xl md:text-3xl font-bold">Paket Wisata Biasa</h1>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
             @foreach ($paketBiasas as $paket)
@@ -181,4 +181,410 @@
             </div>
         </div>
     </div>
+    <div id="akomodasi" class="rekomendasi-hotel py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3">
+        <h2 class="text-2xl font-bold mb-5">Rekomendasi Hotel</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+            <div class="bg-white flex flex-col justify-between rounded-lg shadow-md p-4">
+                <div class="h-full">
+                    <h3 class="text-lg font-semibold">Helios Hotel & Convention Watampone</h3>
+                    <p class="text-sm text-gray-500">Hotel bintang 3</p>
+                </div>
+                <p class="text-lg font-bold text-blue-500">Rp. 725.079</p>
+            </div>
+            <div class="bg-white flex flex-col justify-between rounded-lg shadow-md p-4">
+                <div class="h-full">
+                    <h3 class="text-lg font-semibold">Hotel Grand Rofina</h3>
+                    <p class="text-sm text-gray-500">Hotel bintang 2</p>
+                </div>
+                <p class="text-lg font-bold text-blue-500">Rp. 331.170</p>
+            </div>
+            <div class="bg-white flex flex-col justify-between rounded-lg shadow-md p-4">
+                <div class="h-full">
+                    <h3 class="text-lg font-semibold">Hotel Mario Pulana Bone Mitra RedDoorz</h3>
+                    <p class="text-sm text-gray-500">Hotel bintang 2</p>
+                </div>
+                <p class="text-lg font-bold text-blue-500">Rp. 226.746</p>
+            </div>
+            <div class="bg-white flex flex-col justify-between rounded-lg shadow-md p-4">
+                <div class="h-full">
+                    <h3 class="text-lg font-semibold">The Novena Hotel & Convention. Watampone</h3>
+                    <p class="text-sm text-gray-500">Hotel bintang 2</p>
+                </div>
+                <p class="text-lg font-bold text-blue-500">Rp. 507.290</p>
+            </div>
+            <div class="bg-white flex flex-col justify-between rounded-lg shadow-md p-4">
+                <div class="h-full">
+                    <h3 class="text-lg font-semibold">Boarding House Syariah MM Bone Mitra RedDoorz</h3>
+                    <p class="text-sm text-gray-500">Hotel bintang 1</p>
+                </div>
+                <p class="text-lg font-bold text-blue-500">Rp. 128.887</p>
+            </div>
+            <div class="bg-white flex flex-col justify-between rounded-lg shadow-md p-4">
+                <div class="h-full">
+                    <h3 class="text-lg font-semibold">OYO 92337 Wisma Arwini Syariah</h3>
+                </div>
+                <p class="text-lg font-bold text-blue-500">Rp. 56.318</p>
+            </div>
+            <div class="bg-white flex flex-col justify-between rounded-lg shadow-md p-4">
+                <div class="h-full">
+                    <h3 class="text-lg font-semibold">Sahabat Setia Homestay</h3>
+                </div>
+                <p class="text-lg font-bold text-blue-500">Rp. 74.700</p>
+            </div>
+            <div class="bg-white flex flex-col justify-between rounded-lg shadow-md p-4">
+                <div class="h-full">
+                    <h3 class="text-lg font-semibold">Wisma Tenrisannae</h3>
+                </div>
+                <p class="text-lg font-bold text-blue-500">Rp. 60.412</p>
+            </div>
+            <div class="bg-white flex flex-col justify-between rounded-lg shadow-md p-4">
+                <div class="h-full">
+                    <h3 class="text-lg font-semibold">Athaya kost</h3>
+                </div>
+                <p class="text-lg font-bold text-blue-500">Rp. 58.766</p>
+            </div>
+            <div class="bg-white flex flex-col justify-between rounded-lg shadow-md p-4">
+                <div class="h-full">
+                    <h3 class="text-lg font-semibold">Indekost Exclusive Anugrah</h3>
+                </div>
+                <p class="text-lg font-bold text-blue-500">Rp. 80.397</p>
+            </div>
+        </div>
+    </div>
+    <div id="tentang-kami" class="tentang py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3">
+        <h2 class="text-2xl font-bold mb-5">Tentang Kami</h2>
+        <div class="p-6 mb-5">
+            <h3 class="text-xl font-semibold mb-4">Selamat datang di Natural Bathing PAB</h3>
+            <p class="text-gray-700 leading-relaxed">
+                Kami adalah penyedia layanan pariwisata yang berdedikasi untuk membantu Anda menemukan keajaiban dan
+                keindahan
+                destinasi terbaik di Desa Matajang. Dari Permandian Alam yang menakjubkan hingga pegunungan yang memukau,
+                kami
+                siap membawa Anda menjelajahi surga tersembunyi di negeri ini.
+            </p>
+        </div>
+        <h2 class="text-2xl font-bold mb-5">Misi Kami</h2>
+        <div class="p-6">
+            <p class="text-gray-700 leading-relaxed">
+                Misi kami adalah memberikan pengalaman perjalanan yang tak terlupakan dengan pelayanan terbaik. Kami percaya
+                bahwa setiap perjalanan harus menjadi cerita yang akan dikenang sepanjang hidup. Oleh karena itu, kami
+                selalu berusaha menyediakan paket wisata yang disesuaikan dengan kebutuhan dan keinginan Anda.
+            </p>
+        </div>
+    </div>
+    <div id="aktivitas" class="aktivitas py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3">
+        <h2 class="text-2xl font-bold mb-5">Bagian Aktivitas</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">Jelajah Hutan</h3>
+                <p class="text-gray-700 leading-relaxed mb-3">
+                    Nikmati keindahan hutan tropis dengan pemandu wisata lokal yang berpengalaman.
+                </p>
+                {{-- <p class="text-lg font-bold text-primary-700 mb-3">Rp100.000</p> --}}
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">Bersepeda Gunung</h3>
+                <p class="text-gray-700 leading-relaxed mb-3">
+                    Rasakan sensasi bersepeda di pegunungan dengan pemandangan alam yang menakjubkan.
+                </p>
+                {{-- <p class="text-lg font-bold text-primary-700 mb-3">Rp150.000</p> --}}
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">Rafting Sungai</h3>
+                <p class="text-gray-700 leading-relaxed mb-3">
+                    Petualangan mendebarkan menyusuri sungai dengan arus yang menantang.
+                </p>
+                {{-- <p class="text-lg font-bold text-primary-700 mb-3">Rp200.000</p> --}}
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">Piknik di Taman</h3>
+                <p class="text-gray-700 leading-relaxed mb-3">
+                    Nikmati waktu bersantai bersama keluarga di taman yang indah.
+                </p>
+                {{-- <p class="text-lg font-bold text-primary-700 mb-3">Rp50.000</p> --}}
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">Camping Malam</h3>
+                <p class="text-gray-700 leading-relaxed mb-3">
+                    Pengalaman menginap di alam bebas dengan fasilitas lengkap.
+                </p>
+                {{-- <p class="text-lg font-bold text-primary-700 mb-3">Rp250.000</p> --}}
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">Tur Kebudayaan</h3>
+                <p class="text-gray-700 leading-relaxed mb-3">
+                    Pelajari budaya lokal melalui tur yang dipandu oleh penduduk setempat.
+                </p>
+                {{-- <p class="text-lg font-bold text-primary-700 mb-3">Rp120.000</p> --}}
+            </div>
+        </div>
+        <div class="mt-6 flex justify-center">
+            <a href="#"
+                class="bg-primary-700 text-white py-2 px-4 rounded-full hover:bg-primary-600 transition duration-300 ease-in-out">
+                Lihat Semua Aktivitas
+            </a>
+        </div>
+    </div>
+
+    <div class="layanan py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3">
+        <h2 class="text-2xl font-bold mb-5">Layanan Kami</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">Paket Wisata</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    Pilihan paket wisata yang bervariasi, mulai dari wisata alam, budaya, kuliner, hingga petualangan
+                    ekstrem.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">Pemandu Wisata</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    Pemandu wisata lokal yang ramah dan berpengetahuan, siap memberikan informasi dan pengalaman terbaik
+                    selama perjalanan Anda.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">Akomodasi</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    Pilihan akomodasi yang nyaman dan sesuai dengan anggaran Anda, dari hotel berbintang hingga penginapan
+                    lokal yang unik.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="text-xl font-semibold mb-3">Transportasi</h3>
+                <p class="text-gray-700 leading-relaxed">
+                    Layanan transportasi yang aman dan nyaman untuk memastikan mobilitas Anda selama berwisata tidak
+                    terganggu.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Bagian Testimonial -->
+    <div class="testimonial py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3 relative">
+        <h2 class="text-2xl font-bold mb-5">Bagian Testimonial</h2>
+        <div class="swiper-container" id="testimonialSwiper">
+            <div class="swiper-wrapper">
+                <!-- Slide 1 -->
+                <div class="swiper-slide bg-white p-6 rounded-lg shadow-md flex flex-col items-start gap-4">
+                    <img src="https://via.placeholder.com/50" alt="User Image"
+                        class="w-12 h-12 rounded-full object-cover">
+                    <div class="flex justify-between flex-col">
+                        <p class="text-gray-700 h-full leading-relaxed">"Pelayanan sangat memuaskan dan tempatnya sangat
+                            indah. Saya pasti akan kembali lagi!"</p>
+                        <p class="font-bold text-gray-800">- John Doe</p>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="swiper-slide bg-white p-6 rounded-lg shadow-md flex flex-col items-start gap-4">
+                    <img src="https://via.placeholder.com/50" alt="User Image"
+                        class="w-12 h-12 rounded-full object-cover">
+                    <div class="flex justify-between flex-col">
+                        <p class="text-gray-700 h-full leading-relaxed">"Pengalaman yang luar biasa, suasana alam yang
+                            tenang
+                            dan asri."</p>
+                        <p class="font-bold text-gray-800">- Jane Smith</p>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="swiper-slide bg-white p-6 rounded-lg shadow-md flex flex-col items-start gap-4">
+                    <img src="https://via.placeholder.com/50" alt="User Image"
+                        class="w-12 h-12 rounded-full object-cover">
+                    <div class="flex justify-between flex-col">
+                        <p class="text-gray-700 h-full leading-relaxed">"Sangat direkomendasikan untuk keluarga yang ingin
+                            berlibur."</p>
+                        <p class="font-bold text-gray-800">- Alice Johnson</p>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="swiper-slide bg-white p-6 rounded-lg shadow-md flex flex-col items-start gap-4">
+                    <img src="https://via.placeholder.com/50" alt="User Image"
+                        class="w-12 h-12 rounded-full object-cover">
+                    <div class="flex justify-between flex-col">
+                        <p class="text-gray-700 h-full leading-relaxed">"Harga terjangkau dan fasilitas lengkap. Sangat
+                            puas!"</p>
+                        <p class="font-bold text-gray-800">- Bob Brown</p>
+                    </div>
+                </div>
+            </div>
+            <!-- Add Pagination -->
+            <div class="swiper-pagination mt-4"></div>
+            <!-- Add Navigation -->
+            {{-- <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div> --}}
+        </div>
+        <div class="mt-6 flex justify-center">
+            <a href="#"
+                class="bg-primary-700 text-white py-2 px-4 rounded-full hover:bg-primary-600 transition duration-300 ease-in-out">
+                Baca Lebih Banyak Ulasan
+            </a>
+        </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <div class="faq py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3">
+        <h2 class="text-2xl font-bold mb-5">FAQ</h2>
+        <div class="space-y-4">
+            <div x-data="{ open: false }" class="border rounded-lg shadow-sm overflow-hidden">
+                <button @click="open = !open" class="w-full text-left flex justify-between items-center p-4 bg-white">
+                    <span class="text-lg font-semibold">Apa saja layanan yang ditawarkan oleh Natural Bathing PAB?</span>
+                    <svg :class="{ 'rotate-180': open }" class="h-5 w-5 transform transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="open" x-transition class="p-4 bg-gray-50 text-gray-600">
+                    Kami menawarkan berbagai layanan pariwisata, termasuk paket wisata, pemandu wisata, akomodasi, dan
+                    transportasi.
+                    Detail lebih lanjut dapat Anda temukan di bagian "Layanan Kami" di situs web kami.
+                </div>
+            </div>
+            <div x-data="{ open: false }" class="border rounded-lg shadow-sm overflow-hidden">
+                <button @click="open = !open" class="w-full text-left flex justify-between items-center p-4 bg-white">
+                    <span class="text-lg font-semibold">Bagaimana cara memesan paket wisata di Natural Bathing PAB?</span>
+                    <svg :class="{ 'rotate-180': open }" class="h-5 w-5 transform transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="open" x-transition class="p-4 bg-gray-50 text-gray-600">
+                    Anda dapat memesan paket wisata melalui situs web kami dengan mengikuti langkah-langkah yang ditentukan.
+                    Cukup pilih paket wisata yang Anda inginkan, isi formulir pemesanan, dan lakukan pembayaran sesuai
+                    instruksi.
+                </div>
+            </div>
+            <div x-data="{ open: false }" class="border rounded-lg shadow-sm overflow-hidden">
+                <button @click="open = !open" class="w-full text-left flex justify-between items-center p-4 bg-white">
+                    <span class="text-lg font-semibold">Metode pembayaran apa saja yang diterima?</span>
+                    <svg :class="{ 'rotate-180': open }" class="h-5 w-5 transform transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="open" x-transition class="p-4 bg-gray-50 text-gray-600">
+                    Kami menerima berbagai metode pembayaran, termasuk transfer bank, kartu kredit, dan pembayaran digital
+                    lainnya.
+                    Informasi lengkap mengenai metode pembayaran akan tersedia saat Anda melakukan pemesanan.
+                </div>
+            </div>
+            <div x-data="{ open: false }" class="border rounded-lg shadow-sm overflow-hidden">
+                <button @click="open = !open" class="w-full text-left flex justify-between items-center p-4 bg-white">
+                    <span class="text-lg font-semibold">Apakah ada kebijakan pembatalan?</span>
+                    <svg :class="{ 'rotate-180': open }" class="h-5 w-5 transform transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="open" x-transition class="p-4 bg-gray-50 text-gray-600">
+                    Ya, kebijakan pembatalan kami bervariasi tergantung pada jenis layanan yang dipesan.
+                    Detail kebijakan pembatalan akan diberikan saat proses pemesanan. Harap baca dengan cermat sebelum
+                    melakukan konfirmasi pemesanan.
+                </div>
+            </div>
+            <div x-data="{ open: false }" class="border rounded-lg shadow-sm overflow-hidden">
+                <button @click="open = !open" class="w-full text-left flex justify-between items-center p-4 bg-white">
+                    <span class="text-lg font-semibold">Apakah Natural Bathing PAB menyediakan layanan pemandu wisata
+                        lokal?</span>
+                    <svg :class="{ 'rotate-180': open }" class="h-5 w-5 transform transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="open" x-transition class="p-4 bg-gray-50 text-gray-600">
+                    Ya, kami menyediakan layanan pemandu wisata lokal yang berpengalaman dan berpengetahuan luas tentang
+                    destinasi wisata.
+                    Pemandu kami siap memberikan informasi dan pengalaman terbaik selama perjalanan Anda.
+                </div>
+            </div>
+            <div x-data="{ open: false }" class="border rounded-lg shadow-sm overflow-hidden">
+                <button @click="open = !open" class="w-full text-left flex justify-between items-center p-4 bg-white">
+                    <span class="text-lg font-semibold">Apakah ada jaminan keamanan selama perjalanan?</span>
+                    <svg :class="{ 'rotate-180': open }" class="h-5 w-5 transform transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="open" x-transition class="p-4 bg-gray-50 text-gray-600">
+                    Keselamatan dan keamanan Anda adalah prioritas kami. Kami bekerja sama dengan penyedia layanan yang
+                    terpercaya
+                    dan memastikan semua transportasi dan akomodasi memenuhi standar keselamatan yang tinggi.
+                </div>
+            </div>
+            <div x-data="{ open: false }" class="border rounded-lg shadow-sm overflow-hidden">
+                <button @click="open = !open" class="w-full text-left flex justify-between items-center p-4 bg-white">
+                    <span class="text-lg font-semibold">Apakah Natural Bathing PAB menawarkan layanan khusus untuk kelompok
+                        atau perusahaan?</span>
+                    <svg :class="{ 'rotate-180': open }" class="h-5 w-5 transform transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="open" x-transition class="p-4 bg-gray-50 text-gray-600">
+                    Ya, kami menawarkan paket khusus untuk kelompok besar dan perusahaan yang ingin mengadakan acara,
+                    outing, atau perjalanan bersama.
+                    Silakan hubungi tim kami untuk informasi lebih lanjut dan penawaran khusus.
+                </div>
+            </div>
+            <div x-data="{ open: false }" class="border rounded-lg shadow-sm overflow-hidden">
+                <button @click="open = !open" class="w-full text-left flex justify-between items-center p-4 bg-white">
+                    <span class="text-lg font-semibold">Apakah Natural Bathing PAB mendukung pariwisata
+                        berkelanjutan?</span>
+                    <svg :class="{ 'rotate-180': open }" class="h-5 w-5 transform transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="open" x-transition class="p-4 bg-gray-50 text-gray-600">
+                    Kami berkomitmen untuk mendukung pariwisata berkelanjutan yang bertanggung jawab terhadap lingkungan dan
+                    budaya lokal.
+                    Kami bekerja sama dengan mitra yang memiliki visi yang sama dan mendorong praktik ramah lingkungan dalam
+                    setiap perjalanan.
+                </div>
+            </div>
+            <div x-data="{ open: false }" class="border rounded-lg shadow-sm overflow-hidden">
+                <button @click="open = !open" class="w-full text-left flex justify-between items-center p-4 bg-white">
+                    <span class="text-lg font-semibold">Bagaimana cara mendapatkan informasi terbaru tentang promosi dan
+                        penawaran spesial?</span>
+                    <svg :class="{ 'rotate-180': open }" class="h-5 w-5 transform transition-transform" fill="none"
+                        viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
+                    </svg>
+                </button>
+                <div x-show="open" x-transition class="p-4 bg-gray-50 text-gray-600">
+                    Anda dapat berlangganan newsletter kami untuk mendapatkan informasi terbaru tentang promosi, penawaran
+                    spesial,
+                    dan berita terbaru Natural Bathing PAB. Formulir berlangganan tersedia di bagian bawah situs web kami.
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection
+
+@section('scripts')
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const swiper = new Swiper('#testimonialSwiper', {
+                loop: true,
+                pagination: {
+                    el: '.swiper-pagination',
+                    clickable: true,
+                },
+                breakpoints: {
+                    0: {
+                        slidesPerView: 1,
+                        spaceBetween: 10
+                    },
+                    768: {
+                        slidesPerView: 2,
+                        spaceBetween: 20
+                    },
+                    1024: {
+                        slidesPerView: 3,
+                        spaceBetween: 30
+                    }
+                }
+            });
+        });
+    </script>
 @endsection

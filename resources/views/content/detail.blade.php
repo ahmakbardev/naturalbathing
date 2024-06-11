@@ -1,12 +1,4 @@
 @extends('layouts.layout')
-
-@section('assets')
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
-        integrity="sha512-Fo3rlrZj/k7ujTn7YB2Zf2E2b9A0ZwX+FQ2v8keP0qO/J/3b1m6F1C5GpGVPYdF0t+2KP3lup5jrhfXHfnfXfA=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css" />
-@endsection
-
 @section('content')
     <div class="py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3">
         <div class="flex flex-col md:flex-row gap-10">
@@ -45,7 +37,7 @@
                 </div> --}}
                 <button
                     wire:click="$emit('addItem', { id: {{ $paket->id }}, name: '{{ $paket->nama_paket }}', price: {{ $paket->harga }}, image: '{{ $paket->gambar[0] }}' })"
-                    class="bg-blue-500 text-white font-bold py-2 px-4 rounded hover:bg-blue-700 transition duration-300 ease-in-out">
+                    class="bg-primary-700 text-white font-bold py-2 px-4 rounded-full hover:bg-primary-600 transition duration-300 ease-in-out">
                     <i class="fas fa-shopping-cart mr-2"></i> Pesan Paket
                 </button>
             </div>
