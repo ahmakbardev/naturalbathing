@@ -1,6 +1,6 @@
 <div id="loginModal"
     class="fixed inset-0 flex z-20 items-center justify-center bg-black bg-opacity-50 @if ($modalHidden) hidden @endif">
-    <div class="bg-white p-6 rounded shadow-lg w-1/3">
+    <div class="bg-white p-6 rounded shadow-lg w-[600px] max-w-sm md:max-w-md">
         <button id="closeModal" class="float-right">✖</button>
         <h2 class="text-2xl mb-4">Login</h2>
 

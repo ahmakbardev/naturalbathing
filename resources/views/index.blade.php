@@ -97,103 +97,65 @@
     <div class="paket-biasa py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3">
         <h1 class="text-2xl md:text-3xl font-bold">Paket Wisata Biasa</h1>
         <div class="grid sm:grid-cols-2 md:grid-cols-3 gap-5">
-            <div
-                class="flex flex-col gap-3 p-2 rounded-2xl hover:ring-1 group/button-pkt hover:ring-gray-300 transition-all ease-in-out">
-                <div class="relative box-border overflow-hidden">
-                    <img class="w-full rounded-xl" src="{{ asset('assets/images/paket/biasa.png') }}" alt="">
-                    <div
-                        class="absolute flex bottom-3 left-1/2 -translate-x-1/2 ml-3 w-full group-hover/button-pkt:-translate-y-0 transition-all ease-in-out box-border translate-y-20">
-                        <a href="{{ route('detail') }}"
-                            class="btn-primary hover:btn-secondary hover:bg-primary-700/95 hover:text-white hover:border-none hover:font-semibold transition-all ease-in-out w-[94%] py-3 rounded-md">Pesan
-                            Paket</a>
+            @foreach ($paketBiasas as $paket)
+                <div
+                    class="flex flex-col gap-3 p-2 rounded-2xl hover:ring-1 group/button-pkt hover:ring-gray-300 transition-all ease-in-out">
+                    <div class="relative box-border overflow-hidden">
+                        @php
+                            $gambarArray = json_decode($paket->gambar, true);
+                        @endphp
+                        @if (!empty($gambarArray) && count($gambarArray) > 0)
+                            <img class="w-full max-h-60 object-cover rounded-xl"
+                                src="{{ asset('storage/paket_biasa/' . $gambarArray[0]) }}" alt="">
+                        @else
+                            <img class="w-full object-cover rounded-xl" src="{{ asset('assets/images/paket/biasa.png') }}"
+                                alt="">
+                        @endif
+                        <div
+                            class="absolute flex bottom-3 left-1/2 -translate-x-1/2 ml-3 w-full group-hover/button-pkt:-translate-y-0 transition-all ease-in-out box-border translate-y-20">
+                            <a href="{{ route('detail', $paket->nama_paket) }}"
+                                class="btn-primary hover:btn-secondary hover:bg-primary-700/95 hover:text-white hover:border-none hover:font-semibold transition-all ease-in-out w-[94%] py-3 rounded-md">Pesan
+                                Paket</a>
+
+                        </div>
                     </div>
+                    <div class="flex justify-between items-end">
+                        <div class="flex items-end gap-2">
+                            <h1 class="text-xl font-semibold">Pengunjung</h1>
+                            <span class="text-gray-500">/{{ $paket->nama_paket }}</span>
+                        </div>
+                        {{-- <div class="flex gap-2 items-center">
+                            <i class="fa-solid fa-star text-secondary-700"></i>
+                            <span
+                                class="text-secondary-700">{{ $paket->review ? number_format(array_sum($paket->review) / count($paket->review), 1) : 'No Reviews' }}</span>
+                        </div> --}}
+                    </div>
+                    <h2 class="text-3xl font-bold">Rp. {{ number_format($paket->harga, 0, ',', '.') }}</h2>
                 </div>
-                <div class="flex justify-between items-end">
-                    <div class="flex items-end gap-2">
-                        <h1 class="text-xl font-semibold">Pengunjung</h1>
-                        <span class="text-gray-500">/orang</span>
-                    </div>
-                    <div class="flex gap-2 items-center">
-                        <i class="fa-solid fa-star text-secondary-700"></i>
-                        <span class="text-secondary-700">5.0</span>
-                    </div>
-                </div>
-                <h2 class="text-3xl font-bold">Rp. 10.000</h2>
-            </div>
-            <div
-                class="flex flex-col gap-3 p-2 rounded-2xl hover:ring-1 group/button-pkt hover:ring-gray-300 transition-all ease-in-out">
-                <div class="relative box-border overflow-hidden">
-                    <img class="w-full rounded-xl" src="{{ asset('assets/images/paket/biasa.png') }}" alt="">
-                    <div
-                        class="absolute flex bottom-3 left-1/2 -translate-x-1/2 ml-3 w-full group-hover/button-pkt:-translate-y-0 transition-all ease-in-out box-border translate-y-20">
-                        <a href="{{ route('detail') }}"
-                            class="btn-primary hover:btn-secondary hover:bg-primary-700/95 hover:text-white hover:border-none hover:font-semibold transition-all ease-in-out w-[94%] py-3 rounded-md">Pesan
-                            Paket</a>
-                    </div>
-                </div>
-                <div class="flex justify-between items-end">
-                    <div class="flex items-end gap-2">
-                        <h1 class="text-xl font-semibold">Pengunjung</h1>
-                        <span class="text-gray-500">/orang</span>
-                    </div>
-                    <div class="flex gap-2 items-center">
-                        <i class="fa-solid fa-star text-secondary-700"></i>
-                        <span class="text-secondary-700">5.0</span>
-                    </div>
-                </div>
-                <h2 class="text-3xl font-bold">Rp. 10.000</h2>
-            </div>
-            <div
-                class="flex flex-col gap-3 p-2 rounded-2xl hover:ring-1 group/button-pkt hover:ring-gray-300 transition-all ease-in-out">
-                <div class="relative box-border overflow-hidden">
-                    <img class="w-full rounded-xl" src="{{ asset('assets/images/paket/biasa.png') }}" alt="">
-                    <div
-                        class="absolute flex bottom-3 left-1/2 -translate-x-1/2 ml-3 w-full group-hover/button-pkt:-translate-y-0 transition-all ease-in-out box-border translate-y-20">
-                        <a href="#"
-                            class="btn-primary hover:btn-secondary hover:bg-primary-700/95 hover:text-white hover:border-none hover:font-semibold transition-all ease-in-out w-[94%] py-3 rounded-md">Pesan
-                            Paket</a>
-                    </div>
-                </div>
-                <div class="flex justify-between items-end">
-                    <div class="flex items-end gap-2">
-                        <h1 class="text-xl font-semibold">Pengunjung</h1>
-                        <span class="text-gray-500">/orang</span>
-                    </div>
-                    <div class="flex gap-2 items-center">
-                        <i class="fa-solid fa-star text-secondary-700"></i>
-                        <span class="text-secondary-700">5.0</span>
-                    </div>
-                </div>
-                <h2 class="text-3xl font-bold">Rp. 10.000</h2>
-            </div>
+            @endforeach
         </div>
     </div>
     <div class="paket-spesial py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex md:grid grid-cols-2 items-center">
         <div class="flex flex-col">
             <h1 class="text-2xl md:text-3xl font-bold">Paket Wisata Spesial</h1>
             <div class="flex flex-col gap-5 md:gap-3 my-5">
-                <div class="flex gap-3 items-start">
-                    <img class="object-contain" src="{{ asset('assets/images/paket/icons-special-1.png') }}"
-                        alt="">
-                    <div class="flex flex-col gap-2">
-                        <h1 class="text-base md:text-xl font-bold">Paket Wisata Lengkap</h1>
-                        <h4 class="text-gray-500 text-sm font-semibold">kunjungan wisata bermalam lengkap dengan tempat
-                            menginap dan fasilitas wisata lainnya.</h4>
-                        <div class="md:justify-end text-xl md:text-3xl flex gap-2 items-end font-bold">Rp.500.000 <span
-                                class="text-sm d:text-base">/ malam</span></div>
+                @foreach ($paketSpesial as $paket)
+                    <div class="flex gap-3 items-start mb-5">
+                        <img class="object-contain w-24 h-24"
+                            src="{{ asset('storage/paket_spesial/' . json_decode($paket->gambar)[0]) }}"
+                            alt="{{ $paket->nama_paket }}">
+                        <div class="flex flex-col gap-2">
+                            <h1 class="text-base md:text-xl font-bold">{{ $paket->nama_paket }}</h1>
+                            <h4 class="text-gray-500 text-sm font-semibold">{{ $paket->deskripsi }}</h4>
+                            <div class="md:justify-end text-xl md:text-3xl flex gap-2 items-end font-bold">
+                                Rp{{ number_format($paket->harga, 0, ',', '.') }}
+                                <span class="text-sm d:text-base">/ malam</span>
+                            </div>
+                            <a href="{{ route('paket-spesial.detail', $paket->nama_paket) }}"
+                                class="text-blue-500 hover:underline">Detail</a>
+                        </div>
                     </div>
-                </div>
-                <div class="flex gap-3 items-start">
-                    <img class="object-contain" src="{{ asset('assets/images/paket/icons-special-1.png') }}"
-                        alt="">
-                    <div class="flex flex-col gap-2">
-                        <h1 class="text-base md:text-xl font-bold">Paket Wisata Spesial</h1>
-                        <h4 class="text-gray-500 text-sm font-semibold">kunjungan wisata bermalam lengkap dengan tempat
-                            menginap dan fasilitas wisata lainnya.</h4>
-                        <div class="md:justify-end text-xl md:text-3xl flex gap-2 items-end font-bold">Rp.500.000 <span
-                                class="text-sm d:text-base">/ malam</span></div>
-                    </div>
-                </div>
+                @endforeach
             </div>
 
         </div>

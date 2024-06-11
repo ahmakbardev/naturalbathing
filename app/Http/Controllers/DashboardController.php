@@ -11,7 +11,9 @@ class DashboardController extends Controller
     public function index()
     {
         $heroSections = DB::table('hero_section')->first();
+        $paketBiasas = DB::table('paket_biasa')->get();
+        $paketSpesial = DB::table('paket_spesial')->get();
         // dd($heroSections);
-        return view('index', compact('heroSections'));
+        return view('index', compact(['heroSections', 'paketBiasas', 'paketSpesial']));
     }
 }

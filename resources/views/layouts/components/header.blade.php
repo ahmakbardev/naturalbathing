@@ -5,11 +5,7 @@
 
         <!-- Mobile Nav -->
         <div class="lg:hidden burger-container flex items-center gap-5">
-            <button class="relative">
-                <span
-                    class="bg-red-500 text-white text-[10px] font-semibold px-1.5 py-0.5 rounded-full absolute -top-4 -right-3">1</span>
-                <img class="w-5" src="{{ asset('assets/images/icons/cart.png') }}" alt="Cart">
-            </button>
+            @livewire('cart-button', ['idName' => 'cart-mobile'])
             <button id="burger" class="text-gray-600 focus:outline-none">
                 <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"
                     xmlns="http://www.w3.org/2000/svg">
@@ -28,11 +24,7 @@
             </ul>
             <ul class="flex gap-5 items-center">
                 <li>
-                    <button id="cart" class="relative">
-                        <span
-                            class="bg-red-500 text-white text-[10px] font-semibold px-1.5 py-0.5 rounded-full absolute -top-4 -right-3">1</span>
-                        <img class="w-10" src="{{ asset('assets/images/icons/cart.png') }}" alt="Cart">
-                    </button>
+                    @livewire('cart-button', ['idName' => 'cart-desktop'])
                 </li>
                 @guest <!-- Jika pengguna belum login -->
                     <li>
@@ -40,11 +32,18 @@
                             class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Masuk</a>
                     </li>
                 @else
-                    <!-- Jika pengguna sudah login -->
-                    <li>
-                        <a href="{{ route('logout') }}" id="logoutButton"
-                            class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Logout
-                        </a>
+                    <li class="relative">
+                        <button id="userMenuButton"
+                            class="w-10 h-10 rounded-full bg-primary-700 text-white flex items-center justify-center focus:outline-none">
+                            <i class="fas fa-user"></i>
+                        </button>
+                        <div id="userMenu"
+                            class="hidden absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10 transform transition-transform duration-300 ease-in-out scale-95 opacity-0">
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Lihat Pesanan</a>
+                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
+                            <a href="{{ route('logout') }}" id="logoutButton"
+                                class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</a>
+                        </div>
                     </li>
                 @endguest
             </ul>
@@ -62,48 +61,110 @@
                         class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Masuk</a>
                 @else
                     <!-- Jika pengguna sudah login -->
-                    <a href="{{ route('logout') }}" id="mobileLogoutButton"
-                        class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Logout
-                    </a>
-                @endguest
+                <li>
+                    <a href="#" class="">Lihat Pesanan</a>
+                </li>
+                <li>
+                    <a href="#" class="">Profile</a>
+                </li>
+                <li>
+                    <a href="{{ route('logout') }}" id="mobileLogoutButton" class="">Logout</a>
+                </li>
+            @endguest
             </li>
         </ul>
     </div>
 </header>
 
 <!-- Popup Cart -->
-<div id="popupCart" class="fixed inset-0 z-[12] bg-gray-900/30 bg-opacity-50 flex items-center justify-center hidden">
-    @include('components.popupCart')
+<div id="popupCart" class="fixed inset-0 z-[12] bg-gray-900/30 bg-opacity-50 flex items-center hidden">
+    <div id="CartContent"
+        class="w-full absolute md:right-3 max-w-sm md:max-w-md mt-20 max-h-[80vh] md:max-h-[36rem] md:h-[36rem] p-3 rounded-md bg-white shadow-xl shadow-black/15 slide-in-right">
+        @livewire('cart')
+    </div>
 </div>
 
-@section('scripts')
     <script>
-        document.getElementById('cart').addEventListener('click', function() {
+        document.addEventListener('DOMContentLoaded', function() {
+            const userMenuButton = document.getElementById('userMenuButton');
+            const userMenu = document.getElementById('userMenu');
+
+            userMenuButton.addEventListener('click', function(event) {
+                event.stopPropagation();
+                userMenu.classList.toggle('hidden');
+
+                if (userMenu.classList.contains('hidden')) {
+                    userMenu.classList.remove('scale-100', 'opacity-100');
+                    userMenu.classList.add('scale-95', 'opacity-0');
+                } else {
+                    userMenu.classList.remove('scale-95', 'opacity-0');
+                    userMenu.classList.add('scale-100', 'opacity-100');
+                }
+            });
+
+            document.addEventListener('click', function(event) {
+                if (!userMenu.contains(event.target)) {
+                    userMenu.classList.add('hidden');
+                    userMenu.classList.remove('scale-100', 'opacity-100');
+                    userMenu.classList.add('scale-95', 'opacity-0');
+                }
+            });
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const cartButtonMobile = document.getElementById('cart-mobile');
+            const cartButtonDesktop = document.getElementById('cart-desktop');
             const popupCart = document.getElementById('popupCart');
             const CartContent = document.getElementById('CartContent');
-            if (popupCart.classList.contains('hidden')) {
-                popupCart.classList.remove('hidden');
-                setTimeout(() => {
-                    CartContent.classList.remove('slide-in-right');
-                    CartContent.classList.add('slide-in');
-                }, 10); // slight delay to trigger transition
+            const closePopup = document.getElementById('closePopup');
+
+            function handleCartButtonClick() {
+                if (popupCart.classList.contains('hidden')) {
+                    popupCart.classList.remove('hidden');
+                    setTimeout(() => {
+                        CartContent.classList.remove('slide-in-right');
+                        CartContent.classList.add('slide-in');
+                    }, 10); // slight delay to trigger transition
+                } else {
+                    CartContent.classList.remove('slide-in');
+                    CartContent.classList.add('slide-in-right');
+                    setTimeout(() => {
+                        popupCart.classList.add('hidden');
+                    }, 500); // duration of the slide-out animation
+                }
+            }
+
+            if (window.innerWidth >= 1024) { // lg breakpoint
+                cartButtonDesktop.addEventListener('click', handleCartButtonClick);
             } else {
+                cartButtonMobile.addEventListener('click', handleCartButtonClick);
+            }
+
+            closePopup.addEventListener('click', function() {
                 CartContent.classList.remove('slide-in');
                 CartContent.classList.add('slide-in-right');
                 setTimeout(() => {
                     popupCart.classList.add('hidden');
                 }, 500); // duration of the slide-out animation
-            }
-        });
+            });
 
-        document.getElementById('closePopup').addEventListener('click', function() {
-            const popupCart = document.getElementById('popupCart');
-            const CartContent = document.getElementById('CartContent');
-            CartContent.classList.remove('slide-in');
-            CartContent.classList.add('slide-in-right');
-            setTimeout(() => {
-                popupCart.classList.add('hidden');
-            }, 500); // duration of the slide-out animation
+            // Close popup cart when clicking outside of CartContent
+            document.addEventListener('click', function(event) {
+                if (!popupCart.classList.contains('hidden') && !CartContent.contains(event.target) && event
+                    .target !== cartButtonDesktop && event.target !== cartButtonMobile) {
+                    CartContent.classList.remove('slide-in');
+                    CartContent.classList.add('slide-in-right');
+                    setTimeout(() => {
+                        popupCart.classList.add('hidden');
+                    }, 500); // duration of the slide-out animation
+                }
+            });
+
+            // Prevent closing when clicking inside CartContent
+            CartContent.addEventListener('click', function(event) {
+                event.stopPropagation();
+            });
         });
     </script>
     <script>
@@ -148,4 +209,3 @@
             }
         });
     </script>
-@endsection
