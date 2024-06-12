@@ -24,7 +24,18 @@ class PembayaranController extends Controller
 
         $invoiceId = 'INV-' . strtoupper(uniqid());
 
-        $ssPembayaranPath = $request->file('ss_pembayaran')->store('public/bukti_pembayaran');
+        // Tentukan path tujuan di dalam folder public
+        $destinationPath = public_path('storage/bukti_pembayaran');
+
+        // Pastikan direktori tujuan ada
+        if (!file_exists($destinationPath)) {
+            mkdir($destinationPath, 0755, true);
+        }
+
+        // Pindahkan file ke direktori tujuan
+        $ssPembayaran = $request->file('ss_pembayaran');
+        $ssPembayaranName = $invoiceId . '.' . $ssPembayaran->getClientOriginalExtension();
+        $ssPembayaran->move($destinationPath, $ssPembayaranName);
 
         $cart = Session::get('cart', []);
         $totalPembayaran = array_sum(array_map(function ($item) {
@@ -38,15 +49,15 @@ class PembayaranController extends Controller
                 'items' => $cart,
                 'total' => $totalPembayaran,
             ],
-            'ss_pembayaran' => basename($ssPembayaranPath),
+            'ss_pembayaran' => $ssPembayaranName, // Simpan nama file saja
             'status' => false,
         ];
 
         Pembayaran::create($data);
 
-        // Clear the cart session
+        // Bersihkan sesi setelah pembayaran berhasil
         Session::forget('cart');
 
-        return redirect()->route('pesanan.index')->with('success', 'Pembayaran berhasil dilakukan.');
+        return redirect()->route('home')->with('success', 'Pembayaran berhasil dilakukan.');
     }
 }
