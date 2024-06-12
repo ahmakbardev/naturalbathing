@@ -40,7 +40,8 @@
                 <h1 class="text-lg inline font-semibold">Total</h1>
                 <h1 class="text-lg inline">Rp{{ number_format($total, 0, ',', '.') }}</h1>
             </div>
-            <button class="bg-primary-700 text-center py-3 px-5 rounded-md text-white">Bayar Sekarang</button>
+            <a href="{{ route('pembayaran.create') }}"
+                class="bg-primary-700 text-center py-3 px-5 rounded-md text-white">Bayar Sekarang</a>
         </div>
     </div>
 </div>

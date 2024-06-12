@@ -41,10 +41,13 @@
                     @livewire('cart-button', ['idName' => 'cart-desktop'])
                 </li>
                 @guest <!-- Jika pengguna belum login -->
-                    <li>
-                        <a href="#" id="loginButton"
-                            class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Masuk</a>
-                    </li>
+                    @if (in_array(Route::currentRouteName(), ['login', 'register']))
+                    @else
+                        <li>
+                            <a href="#" id="loginButton"
+                                class="bg-primary-700 text-center py-3 px-5 rounded-full text-white">Masuk</a>
+                        </li>
+                    @endif
                 @else
                     <li class="relative">
                         <button id="userMenuButton"
@@ -53,7 +56,8 @@
                         </button>
                         <div id="userMenu"
                             class="hidden absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10 transform transition-transform duration-300 ease-in-out scale-95 opacity-0">
-                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Lihat Pesanan</a>
+                            <a href="{{ route('pesanan.index') }}"
+                                class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Lihat Pesanan</a>
                             <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
                             <a href="{{ route('logout') }}" id="logoutButton"
                                 class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</a>
