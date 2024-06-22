@@ -2,7 +2,7 @@ name: Deploy Natural Bathing to Hpanel
 
 on:
   push:
-    branches: [develop]
+    branches: [main]
 
 jobs:
   deploy:
@@ -26,7 +26,7 @@ jobs:
             source ~/.bash_profile
             which composer
             composer --version
-            cd /home/u376682195/domains/naturalbathingpab.com/staging/naturalbathing/
+            cd /home/u376682195/domains/naturalbathingpab.com/naturalbathing/
             git stash
             git pull origin develop
             composer update
@@ -35,6 +35,6 @@ jobs:
             php artisan route:clear
             php artisan config:clear
             php artisan view:clear
-            ln -s /home/u376682195/domains/naturalbathingpab.com/naturalbathing_admin/public/storage /home/u376682195/domains/naturalbathingpab.com/public_html/staging
+            ln -s /home/u376682195/domains/naturalbathingpab.com/naturalbathing_admin/public/storage /home/u376682195/domains/naturalbathingpab.com/public_html
             chmod -R 775 storage
             chmod -R 775 public/storage
