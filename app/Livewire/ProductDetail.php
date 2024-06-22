@@ -41,7 +41,7 @@ class ProductDetail extends Component
             'type' => 'paket_biasa',
         ];
 
-        $this->dispatchBrowserEvent('addItemToCart', $item);
+        $this->dispatch('addItemToCart', $item);
     }
 
     public function addReview()
