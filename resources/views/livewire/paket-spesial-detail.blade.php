@@ -77,7 +77,7 @@
                 placeholder="Tulis review Anda"></textarea>
             <a href="{{ route('login') }}"
                 class="bg-blue-500 hover:bg-blue-700 w-full text-center text-white font-bold py-2 px-4 rounded">
-                Login untuk Tambah Review
+                Tambah Review
             </a>
         @endguest
     </div>
