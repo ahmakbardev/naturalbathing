@@ -9,6 +9,9 @@ use Livewire\Component;
 class PaketSpesialDetail extends Component
 {
     public $paket;
+    public $newReview;
+    public $reviews;
+    public $reviewCount;
 
     public function mount($nama_paket)
     {
@@ -17,6 +20,15 @@ class PaketSpesialDetail extends Component
         if (!$this->paket) {
             abort(404, 'Paket tidak ditemukan');
         }
+
+        $this->reviews = DB::table('reviews')
+            ->join('users', 'reviews.user_id', '=', 'users.id')
+            ->where('paket_id', $this->paket->id)
+            ->where('paket_type', 'paket_spesial')
+            ->select('reviews.*', 'users.name as user_name')
+            ->get();
+
+        $this->reviewCount = $this->reviews->count();
     }
 
     public function addItem($id, $name, $price, $image)
@@ -32,16 +44,35 @@ class PaketSpesialDetail extends Component
         $this->dispatch('addItemToCart', $item);
     }
 
+    public function addReview()
+    {
+        $this->validate([
+            'newReview' => 'required|string',
+        ]);
+
+        DB::table('reviews')->insert([
+            'paket_id' => $this->paket->id,
+            'paket_type' => 'paket_spesial',
+            'user_id' => auth()->id(), // Storing the user_id
+            'review' => $this->newReview,
+            'created_at' => now(),
+            'updated_at' => now(),
+        ]);
+
+        // Refresh the page
+        return redirect()->route('paket-spesial.detail', ['nama_paket' => $this->paket->nama_paket]);
+    }
+
     public function render()
     {
         if (is_string($this->paket->gambar)) {
             $this->paket->gambar = json_decode($this->paket->gambar, true);
         }
 
-        if (is_string($this->paket->review)) {
-            $this->paket->review = json_decode($this->paket->review, true);
-        }
-
-        return view('livewire.paket-spesial-detail', ['paket' => $this->paket]);
+        return view('livewire.paket-spesial-detail', [
+            'paket' => $this->paket,
+            'reviews' => $this->reviews,
+            'reviewCount' => $this->reviewCount
+        ]);
     }
 }

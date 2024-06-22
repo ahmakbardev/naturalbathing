@@ -40,22 +40,34 @@
         </div>
     </div>
     <!-- Review Carousel -->
-    <div class="mt-10">
-        <h2 class="text-2xl font-bold text-gray-800 mb-3">Reviews</h2>
-        <div class="swiper-container relative">
-            <div class="swiper-wrapper">
-                @if ($paket->review)
-                    @foreach ($paket->review as $review)
+    @if ($reviewCount > 0)
+        <div class="mt-10">
+            <h2 class="text-2xl font-bold text-gray-800 mb-3">Reviews</h2>
+            <div class="swiper-container relative">
+                <div class="swiper-wrapper">
+                    @foreach ($reviews as $review)
                         <div class="swiper-slide p-5 bg-gray-100 rounded-lg shadow-md">
-                            <p class="text-gray-700 mb-3">{{ $review }}</p>
-                            <p class="font-bold text-gray-800">- Reviewer</p>
+                            <p class="text-gray-700 mb-3">{{ $review->review }}</p>
+                            <p class="font-bold text-gray-800">- {{ $review->user_name }}</p>
                         </div>
                     @endforeach
-                @endif
+                </div>
+                <div class="swiper-pagination mt-4"></div>
             </div>
-            <!-- Add Pagination -->
-            <div class="swiper-pagination mt-4"></div>
         </div>
+    @endif
+
+    <div class="mt-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-3">Tambah Review</h2>
+        <form wire:submit.prevent="addReview">
+            <div class="mb-4">
+                <textarea wire:model="newReview"
+                    class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500"
+                    placeholder="Tulis review Anda" required></textarea>
+            </div>
+            <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Kirim
+                Review</button>
+        </form>
     </div>
 </div>
 

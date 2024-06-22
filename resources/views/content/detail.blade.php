@@ -1,4 +1,5 @@
 @extends('layouts.layout')
+
 @section('content')
     <div class="py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex flex-col gap-3">
         <div class="flex flex-col md:flex-row gap-10">
@@ -43,7 +44,7 @@
             </div>
         </div>
         <!-- Review Carousel -->
-        {{-- @if ($reviewCount > 0)
+        @if ($reviewCount > 0)
             <div class="mt-10">
                 <h2 class="text-2xl font-bold text-gray-800 mb-3">Reviews</h2>
                 <div class="swiper-container relative">
@@ -58,7 +59,7 @@
                     <div class="swiper-pagination mt-4"></div>
                 </div>
             </div>
-        @endif --}}
+        @endif
     </div>
 @endsection
 

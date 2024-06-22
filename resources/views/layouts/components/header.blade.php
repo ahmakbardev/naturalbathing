@@ -26,14 +26,14 @@
                     <li class="text-sm"><a href="#akomodasi" class="scroll-smooth">Akomodasi</a></li>
                     <li class="text-sm"><a href="#aktivitas" class="scroll-smooth">Aktivitas</a></li>
                     <li class="text-sm"><a href="#kontak" class="scroll-smooth">Kontak</a></li>
-                    <li class="text-sm"><a href="#panduan-perjalanan" class="scroll-smooth">Panduan Perjalanan</a></li>
+                    {{-- <li class="text-sm"><a href="#panduan-perjalanan" class="scroll-smooth">Panduan Perjalanan</a></li> --}}
                 @else
                     <li class="text-sm"><a href="{{ route('home') }}#tentang-kami">Tentang Kami</a></li>
                     <li class="text-sm"><a href="{{ route('home') }}#destinasi">Destinasi</a></li>
                     <li class="text-sm"><a href="{{ route('home') }}#akomodasi">Akomodasi</a></li>
                     <li class="text-sm"><a href="{{ route('home') }}#aktivitas">Aktivitas</a></li>
                     <li class="text-sm"><a href="{{ route('home') }}#kontak">Kontak</a></li>
-                    <li class="text-sm"><a href="{{ route('home') }}#panduan-perjalanan">Panduan Perjalanan</a></li>
+                    {{-- <li class="text-sm"><a href="{{ route('home') }}#panduan-perjalanan">Panduan Perjalanan</a></li> --}}
                 @endif
             </ul>
             <ul class="flex gap-5 items-center">
@@ -76,14 +76,14 @@
                 <li class="text-sm"><a href="#akomodasi" class="scroll-smooth">Akomodasi</a></li>
                 <li class="text-sm"><a href="#aktivitas" class="scroll-smooth">Aktivitas</a></li>
                 <li class="text-sm"><a href="#kontak" class="scroll-smooth">Kontak</a></li>
-                <li class="text-sm"><a href="#panduan-perjalanan" class="scroll-smooth">Panduan Perjalanan</a></li>
+                {{-- <li class="text-sm"><a href="#panduan-perjalanan" class="scroll-smooth">Panduan Perjalanan</a></li> --}}
             @else
                 <li class="text-sm"><a href="{{ route('home') }}#tentang-kami">Tentang Kami</a></li>
                 <li class="text-sm"><a href="{{ route('home') }}#destinasi">Destinasi</a></li>
                 <li class="text-sm"><a href="{{ route('home') }}#akomodasi">Akomodasi</a></li>
                 <li class="text-sm"><a href="{{ route('home') }}#aktivitas">Aktivitas</a></li>
                 <li class="text-sm"><a href="{{ route('home') }}#kontak">Kontak</a></li>
-                <li class="text-sm"><a href="{{ route('home') }}#panduan-perjalanan">Panduan Perjalanan</a></li>
+                {{-- <li class="text-sm"><a href="{{ route('home') }}#panduan-perjalanan">Panduan Perjalanan</a></li> --}}
             @endif
             <li>
                 @guest <!-- Jika pengguna belum login -->
@@ -92,11 +92,11 @@
                 @else
                     <!-- Jika pengguna sudah login -->
                 <li>
-                    <a href="#">Lihat Pesanan</a>
+                    <a href="{{ route('pesanan.index') }}">Lihat Pesanan</a>
                 </li>
-                <li>
+                {{-- <li>
                     <a href="#">Profile</a>
-                </li>
+                </li> --}}
                 <li>
                     <a href="{{ route('logout') }}" id="mobileLogoutButton">Logout</a>
                 </li>

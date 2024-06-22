@@ -44,23 +44,35 @@
             </button>
         </div>
     </div>
-    <!-- Review Carousel -->
-    @if ($reviewCount > 0)
+    <!-- Review Section -->
+    {{-- @if ($reviewCount > 0) --}}
         <div class="mt-10">
             <h2 class="text-2xl font-bold text-gray-800 mb-3">Reviews</h2>
-            <div class="swiper-container relative" id="product">
+            <div id="product" class="swiper-container relative">
                 <div class="swiper-wrapper">
-                    @foreach ($paket->review as $review)
+                    @foreach ($reviews as $review)
                         <div class="swiper-slide p-5 bg-gray-100 rounded-lg shadow-md">
-                            <p class="text-gray-700 mb-3">"{{ $review }}"</p>
-                            <p class="font-bold text-gray-800">- Pengulas {{ $loop->iteration }}</p>
+                            <p class="text-gray-700 mb-3">{{ $review->review }}</p>
+                            <p class="font-bold text-gray-800">- {{ $review->reviewer_name }}</p>
                         </div>
                     @endforeach
                 </div>
                 <div class="swiper-pagination mt-4"></div>
             </div>
         </div>
-    @endif
+    {{-- @endif --}}
+
+    <!-- Tambah Review -->
+    <div class="mt-5">
+        <h3 class="text-lg font-bold text-gray-800 mb-3">Tambah Review</h3>
+        <form wire:submit.prevent="addReview">
+            <textarea wire:model="newReview" class="w-full p-2 border rounded-lg" placeholder="Tulis review Anda di sini..."></textarea>
+            @error('newReview')
+                <span class="text-red-500">{{ $message }}</span>
+            @enderror
+            <button type="submit" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded">Kirim</button>
+        </form>
+    </div>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mainImage = document.getElementById('mainImage');

@@ -16,7 +16,7 @@
                 {{ $heroSections->subtitle }}
             </h4>
             <div class="flex gap-3">
-                <a href="#"
+                <a href="#destinasi"
                     class="btn-primary text-xs md:text-base py-3 px-5 md:px-8 hover:shadow-lg hover:-translate-y-1 transition-all ease-in-out w-fit rounded-full">Pesan
                     Sekarang</a>
                 @if ($heroSections->video)
@@ -140,20 +140,41 @@
             <h1 class="text-2xl md:text-3xl font-bold">Paket Wisata Spesial</h1>
             <div class="flex flex-col gap-5 md:gap-3 my-5">
                 @foreach ($paketSpesial as $paket)
-                    <div class="flex gap-3 items-start mb-5">
-                        <img class="object-contain w-24 h-24"
-                            src="{{ asset('storage/paket_spesial/' . json_decode($paket->gambar)[0]) }}"
-                            alt="{{ $paket->nama_paket }}">
-                        <div class="flex flex-col gap-2">
-                            <h1 class="text-base md:text-xl font-bold">{{ $paket->nama_paket }}</h1>
-                            <h4 class="text-gray-500 text-sm font-semibold">{!! $paket->short_deskripsi !!}</h4>
-                            <div class="md:justify-end text-xl md:text-3xl flex gap-2 items-end font-bold">
-                                Rp{{ number_format($paket->harga, 0, ',', '.') }}
-                                <span class="text-sm d:text-base">/ malam</span>
+                    <div class="flex justify-between p-3 rounded-xl transition-all ease-in-out mb-5 items-center group hover:ring-1 hover:ring-primary-500">
+
+                        <div class="flex gap-3 items-start">
+                            <img class="object-contain w-24 h-24"
+                                src="{{ asset('storage/paket_spesial/' . json_decode($paket->gambar)[0]) }}"
+                                alt="{{ $paket->nama_paket }}">
+                            <div class="flex flex-col gap-2">
+                                <h1 class="text-base md:text-xl font-bold">{{ $paket->nama_paket }}</h1>
+                                <h4 class="text-gray-500 text-sm font-semibold">{!! $paket->short_deskripsi !!}</h4>
+                                <div class="md:justify-end text-xl md:text-3xl flex gap-2 items-end font-bold">
+                                    Rp. {{ number_format($paket->harga, 0, ',', '.') }}
+                                    <span class="text-sm d:text-base">/ malam</span>
+                                </div>
                             </div>
-                            <a href="{{ route('paket-spesial.detail', $paket->nama_paket) }}"
-                                class="text-blue-500 hover:underline">Detail</a>
                         </div>
+                        <a href="{{ route('paket-spesial.detail', $paket->nama_paket) }}"
+                            class="text-transparent group-hover:text-white group-hover:bg-primary-500 hover:bg-primary-700 rounded-lg py-2 px-4 hover:underline transition-all ease-in-out">Lihat Detail</a>
+                    </div>
+                    <div class="flex justify-between p-3 rounded-xl transition-all ease-in-out mb-5 items-center group hover:ring-1 hover:ring-primary-500">
+
+                        <div class="flex gap-3 items-start">
+                            <img class="object-contain w-24 h-24"
+                                src="{{ asset('storage/paket_spesial/' . json_decode($paket->gambar)[0]) }}"
+                                alt="{{ $paket->nama_paket }}">
+                            <div class="flex flex-col gap-2">
+                                <h1 class="text-base md:text-xl font-bold">{{ $paket->nama_paket }}</h1>
+                                <h4 class="text-gray-500 text-sm font-semibold">{!! $paket->short_deskripsi !!}</h4>
+                                <div class="md:justify-end text-xl md:text-3xl flex gap-2 items-end font-bold">
+                                    Rp. {{ number_format($paket->harga, 0, ',', '.') }}
+                                    <span class="text-sm d:text-base">/ malam</span>
+                                </div>
+                            </div>
+                        </div>
+                        <a href="{{ route('paket-spesial.detail', $paket->nama_paket) }}"
+                            class="text-transparent group-hover:text-white group-hover:bg-primary-500 hover:bg-primary-700 rounded-lg py-2 px-4 hover:underline transition-all ease-in-out">Lihat Detail</a>
                     </div>
                 @endforeach
             </div>
@@ -162,21 +183,21 @@
         <div class="lg:flex flex-col gap-3 hidden">
             <div class="flex justify-end items-end gap-3">
                 <div class="w-72">
-                    <img class=" z-[1] rounded-xl" src="{{ asset('assets/images/paket/spesial.png') }}" alt="">
+                    <img class=" z-[1] rounded-xl" src="{{ asset('assets/images/paket-spesial/hero_2.png') }}" alt="">
                 </div>
                 <div class="w-56">
                     <img class="w-full rounded-r-2xl rounded-tl-2xl object-cover z-0"
-                        src="{{ asset('assets/images/paket/spesial.png') }}" alt="">
+                        src="{{ asset('assets/images/paket-spesial/hero_3.png') }}" alt="">
                 </div>
             </div>
             <div class="flex justify-end items-start gap-3">
                 <div class="w-36">
                     <img class="w-full rounded-b-2xl rounded-tl-2xl object-cover z-0"
-                        src="{{ asset('assets/images/paket/spesial.png') }}" alt="">
+                        src="{{ asset('assets/images/paket-spesial/hero_1.png') }}" alt="">
                 </div>
                 <div class="h-56 w-96">
                     <img class="inset-3 w-full object-cover h-full z-[1]  rounded-xl"
-                        src="{{ asset('assets/images/paket/spesial.png') }}" alt="">
+                        src="{{ asset('assets/images/paket-spesial/hero_4.png') }}" alt="">
                 </div>
             </div>
         </div>
