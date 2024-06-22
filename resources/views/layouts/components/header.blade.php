@@ -58,7 +58,7 @@
                             class="hidden absolute right-0 mt-2 w-48 bg-white border rounded-lg shadow-lg z-10 transform transition-transform duration-300 ease-in-out scale-95 opacity-0">
                             <a href="{{ route('pesanan.index') }}"
                                 class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Lihat Pesanan</a>
-                            <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a>
+                            {{-- <a href="#" class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Profile</a> --}}
                             <a href="{{ route('logout') }}" id="logoutButton"
                                 class="block px-4 py-2 text-gray-800 hover:bg-gray-100">Logout</a>
                         </div>
