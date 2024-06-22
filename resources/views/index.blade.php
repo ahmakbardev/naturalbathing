@@ -135,7 +135,7 @@
             @endforeach
         </div>
     </div>
-    <div class="paket-spesial py-5 md:py-10 px-5 md:px-10 2xl:px-48 flex md:grid grid-cols-2 items-center">
+    <div class="paket-spesial py-5 md:py-10 px-5 md:px-10 2xl:px-48 grid-cols-1 grid gap-10 lg:grid-cols-2 items-center">
         <div class="flex flex-col">
             <h1 class="text-2xl md:text-3xl font-bold">Paket Wisata Spesial</h1>
             <div class="flex flex-col gap-5 md:gap-3 my-5">
