@@ -64,18 +64,27 @@
 
     <!-- Tambah Review -->
     @auth
-        <div class="mt-5">
-            <h3 class="text-lg font-bold text-gray-800 mb-3">Tambah Review</h3>
-            <form wire:submit.prevent="addReview">
-                <textarea wire:model="newReview" class="w-full p-2 border rounded-lg" placeholder="Tulis review Anda di sini..."></textarea>
-                @error('newReview')
-                    <span class="text-red-500">{{ $message }}</span>
-                @enderror
-                <button type="submit" class="mt-2 bg-blue-500 text-white py-2 px-4 rounded">Kirim</button>
-            </form>
-        </div>
-
+        <form wire:submit.prevent="addReview">
+            <div class="mt-4">
+                <textarea wire:model="newReview"
+                    class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500"
+                    placeholder="Tulis review Anda" required></textarea>
+            </div>
+            <button type="submit"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full text-center rounded">Kirim
+                Review</button>
+        </form>
     @endauth
+
+    @guest
+        <textarea
+            class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500"
+            placeholder="Tulis review Anda"></textarea>
+        <a href="{{ route('login') }}"
+            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 w-full text-center rounded">
+            Tambah Review
+        </a>
+    @endguest
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             const mainImage = document.getElementById('mainImage');

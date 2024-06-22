@@ -21,6 +21,10 @@
             </div>
             <button type="submit" class="bg-blue-500 text-white p-2 rounded">Login</button>
         </form>
+        <div class="mt-4 text-center">
+            <a href="{{ route('register') }}" class="text-blue-500 hover:underline">Don't have an account?
+                Register</a>
+        </div>
     </div>
 </div>
 

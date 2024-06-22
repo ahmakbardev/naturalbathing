@@ -56,21 +56,32 @@
             </div>
         </div>
     @endif
-    @auth
-
-        <div class="mt-10">
-            <h2 class="text-2xl font-bold text-gray-800 mb-3">Tambah Review</h2>
+    <div class="mt-10">
+        <h2 class="text-2xl font-bold text-gray-800 mb-3">Tambah Review</h2>
+        @auth
             <form wire:submit.prevent="addReview">
-                <div class="mb-4">
+                <div class="mt-4">
                     <textarea wire:model="newReview"
                         class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500"
                         placeholder="Tulis review Anda" required></textarea>
                 </div>
-                <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Kirim
+                <button type="submit"
+                    class="bg-blue-500 hover:bg-blue-700 w-full text-center text-white font-bold py-2 px-4 rounded">Kirim
                     Review</button>
             </form>
-        </div>
-    @endauth
+        @endauth
+
+        @guest
+            <textarea
+                class="w-full px-3 py-2 border rounded-lg text-gray-700 focus:outline-none focus:border-blue-500"
+                placeholder="Tulis review Anda"></textarea>
+            <a href="{{ route('login') }}"
+                class="bg-blue-500 hover:bg-blue-700 w-full text-center text-white font-bold py-2 px-4 rounded">
+                Login untuk Tambah Review
+            </a>
+        @endguest
+    </div>
+
 </div>
 
 @section('scripts')
